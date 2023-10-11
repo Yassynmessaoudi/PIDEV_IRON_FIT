@@ -6,14 +6,16 @@
 package first.pkgtry;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import models.Abonnement;
 import services.ServicesAbonnement;
 import java.util.List;
+import javafx.stage.Stage;
 import models.SalleDeSport;
 import services.ServicesSalleDeSport;
-import util.Relation;
+import util.DataSource;
 
 /**
  *
@@ -28,27 +30,28 @@ public class FirstTry {
   // TODO code application logic here
   
         
-        Relation.getInstance();
-         Relation.getInstance();
-         Relation.getInstance();
-         Relation.getInstance();
-         Relation.getInstance();
+        DataSource.getInstance();
+         DataSource.getInstance();
+         DataSource.getInstance();
+         DataSource.getInstance();
+         DataSource.getInstance();
     
+        
          
-         
+    }    } 
          // ... (initialisez votre environnement ici si nécessaire)
 
-    ServicesAbonnement serviceAbonnements = new ServicesAbonnement();
+   // ServicesAbonnement serviceAbonnements = new ServicesAbonnement();
 
     // Appelez la méthode afficherAbonnement
-    List<Abonnement> abonnements = serviceAbonnements.afficherAbonnement();
+  //  List<Abonnement> abonnements = serviceAbonnements.afficherAbonnement();
 
     // Parcourez la liste des abonnements et affichez-les
-    for (Abonnement abonnement : abonnements) {
-        System.out.println(abonnement);
-    }
-    }
-}
+  //  for (Abonnement abonnement : abonnements) {
+ //       System.out.println(abonnement);
+ //  }
+  //  }
+//}
          // Ajouter l'abonnement
   
      

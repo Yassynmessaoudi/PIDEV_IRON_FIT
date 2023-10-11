@@ -14,9 +14,9 @@ import java.sql.SQLException;
  *
  * @author tlili
  */
-public class Relation {
+public class DataSource {
     private Connection cnx;
-    private static Relation instance;
+    private static DataSource instance;
     
     final String URL = "jdbc:mysql://localhost:3306/yassine";
     final String USR = "root";
@@ -24,7 +24,7 @@ public class Relation {
     
    
     
-    private Relation() {
+    private DataSource() {
         try {
             cnx = DriverManager.getConnection(URL, USR, PWD);
             System.out.println("Relation etablie avec succes!");
@@ -33,9 +33,9 @@ public class Relation {
         }
         
     }
-    public static Relation getInstance() {
+    public static DataSource getInstance() {
         if(instance == null)
-            instance = new Relation();
+            instance = new DataSource();
         return instance;
     }
 

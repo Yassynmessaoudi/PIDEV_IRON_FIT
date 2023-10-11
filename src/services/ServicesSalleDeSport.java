@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import models.SalleDeSport;
-import util.Relation;
+import util.DataSource;
 
 /**
  *
@@ -22,7 +22,7 @@ public class ServicesSalleDeSport implements IServiceSalleDeSport<SalleDeSport> 
     Connection cnx; 
 
     public ServicesSalleDeSport() {
-        this.cnx= Relation.getInstance().getConnection();
+        this.cnx= DataSource.getInstance().getConnection();
     }
 
   
@@ -107,7 +107,7 @@ public void ajouterSalleDeSport(SalleDeSport ss) {
 
  
     @Override
-    public List<SalleDeSport> getAllSalleDeSport(SalleDeSport ss) {
+    public List<SalleDeSport> getAllSalleDeSport()  {
         String req = "SELECT * FROM `Salledesport`";
         ArrayList<SalleDeSport> SalleDeSports = new ArrayList<>();
         try {

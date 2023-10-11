@@ -18,14 +18,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import models.Abonnement;
-import util.Relation;
+import util.DataSource;
 
 public class ServicesAbonnement implements IServiceAbonnement<Abonnement> {
      Connection cnx; 
  Statement ste;
   PreparedStatement preparedStatement;
     public ServicesAbonnement() {
-        this.cnx= Relation.getInstance().getConnection();
+        this.cnx= DataSource.getInstance().getConnection();
     }
 
     @Override

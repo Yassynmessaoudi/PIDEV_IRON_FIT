@@ -16,5 +16,5 @@ interface IServiceSalleDeSport<T> {
     public void modifierSalleDeSport(T t);
     public void supprimerSalleDeSport(int id);
     public T getOneSalleDeSport(T t);
-    public List<T> getAllSalleDeSport(T t);
+    public List<T> getAllSalleDeSport();
 }

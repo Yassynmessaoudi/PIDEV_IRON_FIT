@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAfficheSalleDeSportController">
+   <children>
+      <TableView fx:id="table" prefHeight="400.0" prefWidth="731.0">
+        <columns>
+          <TableColumn fx:id="idsalledesport" prefWidth="166.40003049373627" text="ID" />
+          <TableColumn fx:id="nomsalledesport" prefWidth="167.20001220703125" text="Nom" />
+            <TableColumn fx:id="adressesalledesport" prefWidth="129.5999755859375" text="Adresse" />
+            <TableColumn fx:id="capacitesalledesport" prefWidth="150.39993286132812" text="Capacite" />
+            <TableColumn fx:id="specialitesalledesport" prefWidth="116.8000366210938" text="Specialite" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
