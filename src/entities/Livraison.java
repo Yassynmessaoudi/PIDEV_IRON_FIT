@@ -5,14 +5,16 @@
  */
 package entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author gheri
  */
 public class Livraison {
     private int ref_livraison;
-   private String date_livraison;
-        private int refCommande;
+   private Date date_livraison;
+        private String refCommande;
 
     @Override
     public String toString() {
@@ -21,32 +23,32 @@ public class Livraison {
 
   
 
-    public Livraison(int ref_livraison, String date_livraison) {
+    public Livraison(int ref_livraison, Date date_livraison) {
         this.ref_livraison = ref_livraison;
         this.date_livraison = date_livraison;
         
     }
 
-    public Livraison(int ref_livraison, String date_livraison, int refCommande) {
+    public Livraison(int ref_livraison, Date date_livraison, String refCommande) {
         this.ref_livraison = ref_livraison;
         this.date_livraison = date_livraison;
         this.refCommande = refCommande;
     }
 
-    public Livraison(String date_livraison, int refCommande) {
+    public Livraison(Date date_livraison, String refCommande) {
         this.date_livraison = date_livraison;
         this.refCommande = refCommande;
     }
 
-    public void setRefCommande(int refCommande) {
+    public void setRefCommande(String refCommande) {
         this.refCommande = refCommande;
     }
 
-    public int getRefCommande() {
+    public String getRefCommande() {
         return refCommande;
     }
 
-    public Livraison(String date_livraison) {
+    public Livraison(Date date_livraison) {
         this.date_livraison = date_livraison;
     }
 
@@ -61,7 +63,7 @@ public class Livraison {
         this.ref_livraison = ref_livraison;
     }
 
-    public void setDate_livraison(String date_livraison) {
+    public void setDate_livraison(Date date_livraison) {
         this.date_livraison = date_livraison;
     }
     
@@ -72,7 +74,7 @@ public class Livraison {
         return ref_livraison;
     }
 
-    public String getDate_livraison() {
+    public Date getDate_livraison() {
         return date_livraison;
     }
 }

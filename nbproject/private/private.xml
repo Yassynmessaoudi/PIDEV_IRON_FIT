@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/interfaces/ICommande.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/Location_commandeController.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/Afficher_livraisonController.java</file>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/services/commandeService.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/Afficher_commandeController.java</file>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/entities/Commande.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/ModifiercommandeController.java</file>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/services/livraisonService.java</file>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/services/CreatePdf.java</file>
+            <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/entities/Livraison.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/ModifierlivraisonController.java</file>
             <file>file:/C:/Users/gheri/OneDrive/Documents/NetBeansProjects/Gestion_commande/src/GUI/NewFXMain.java</file>
         </group>

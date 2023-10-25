@@ -17,7 +17,7 @@ public interface ICommande {
     
     public void ajouterCommand(Commande C);
     public void modifierCommand(Commande C);
-    public void supprimerCommand(int refCommande);
+    public void supprimerCommand(String refCommande);
     public List<Commande> afficherCommandes();
-    public Commande getCommendByRef (int refCommande) throws SQLException;
+    public Commande getCommendByRef (String refCommande) throws SQLException;
 }

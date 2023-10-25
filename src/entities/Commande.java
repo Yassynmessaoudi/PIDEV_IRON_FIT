@@ -12,17 +12,11 @@ import java.util.Objects;
 public class Commande {
     
     
-    private int refCommande;
+    private String refCommande;
     private String delaisLivraison;
      private double FraisdePort;
     private double montant;
 
-    public Commande(int refCommande, String delaisLivraison, double FraisdePort, double montant) {
-        this.refCommande = refCommande;
-        this.delaisLivraison = delaisLivraison;
-        this.FraisdePort = FraisdePort;
-        this.montant = montant;
-    }
 
     public Commande(String delaisLivraison, double FraisdePort, double montant) {
         this.delaisLivraison = delaisLivraison;
@@ -36,9 +30,7 @@ public class Commande {
 
     
 
-    public int getRefCommande() {
-        return refCommande;
-    }
+ 
 
     public String getDelaisLivraison() {
         return delaisLivraison;
@@ -52,7 +44,18 @@ public class Commande {
         return montant;
     }
 
-    public void setRefCommande(int refCommande) {
+    public Commande(String refCommande, String delaisLivraison, double FraisdePort, double montant) {
+        this.refCommande = refCommande;
+        this.delaisLivraison = delaisLivraison;
+        this.FraisdePort = FraisdePort;
+        this.montant = montant;
+    }
+
+    public String getRefCommande() {
+        return refCommande;
+    }
+
+    public void setRefCommande(String refCommande) {
         this.refCommande = refCommande;
     }
 
