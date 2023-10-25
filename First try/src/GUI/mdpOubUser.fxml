@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="353.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MdpOubUserController">
+   <children>
+      <ImageView fitHeight="360.0" fitWidth="664.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@8.png" />
+         </image>
+      </ImageView>
+      <TextField id="tf_mdpoub_email" fx:id="tf_mdpoub_email" layoutX="123.0" layoutY="161.0" prefHeight="31.0" prefWidth="355.0" promptText="E-mail" />
+      <Label layoutX="99.0" layoutY="87.0" text="Réinitialiser votre mot de passe " textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="208.0" layoutY="308.0" prefHeight="27.0" prefWidth="125.0" text="Retourner vers " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button id="btn_mdpoub_cnx" fx:id="btn_mdpoub_cnx" layoutX="319.0" layoutY="306.0" mnemonicParsing="false" onAction="#retour" prefHeight="27.0" prefWidth="115.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Connecter" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="btn_mdpoub_env" fx:id="btn_mdpoub_env" layoutX="225.0" layoutY="221.0" mnemonicParsing="false" onAction="#btnCodeAction" prefHeight="34.0" prefWidth="160.0" style="-fx-background-color: white; -fx-cursor: hand;" text="Envoyer code">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

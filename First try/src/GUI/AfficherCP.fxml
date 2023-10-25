@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="752.0" style="-fx-background-color: #8b9799;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherCPController">
+    <children>
+      <ImageView fitHeight="580.0" fitWidth="907.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/8.png" />
+         </image>
+      </ImageView>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Button id="dark" fx:id="btr7" layoutX="20.0" layoutY="11.0" mnemonicParsing="false" onAction="#Retour" prefHeight="71.0" prefWidth="157.0" style="-fx-font-weight: bold;" stylesheets="@../Style/style.css" text="Retour">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="57.0" fitWidth="200.0" layoutX="564.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/3.1.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="CPListView" layoutX="158.0" layoutY="159.0" prefHeight="284.0" prefWidth="501.0" />
+      <Button id="but1" fx:id="excel" layoutX="664.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnexcel" prefHeight="65.0" prefWidth="193.0" stylesheets="@../Style/style.css" text="Télécharger en Excel !">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
+         </font></Button>
+      <Label layoutX="244.0" layoutY="89.0" text="Nos codes Promo du mois !" textFill="WHITE">
+         <font>
+            <Font name="Roboto Bold" size="30.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

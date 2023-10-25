@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="468.0" prefWidth="587.0" style="-fx-background-color: white; -fx-background-image: 17.png;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ConnexionUserController">
+   <children>
+      <ImageView fitHeight="491.0" fitWidth="714.0" layoutX="-5.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/11.png" />
+         </image>
+      </ImageView>
+      <TextField id="tf:connexion:email" fx:id="tf_connexion_email" layoutX="360.0" layoutY="184.0" prefHeight="40.0" prefWidth="200.0" promptText="E-mail">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </TextField>
+       <Button id="but1" fx:id="btn_connexion_inscri" layoutX="305.0" layoutY="362.0" mnemonicParsing="false" onAction="#cnx" prefHeight="49.0" prefWidth="148.0" style="-fx-cursor: hand;" styleClass="add-btn" stylesheets="@../Style/style.css" text="Se Connecter">
+         <font>
+            <Font name="Roboto Bold" size="15.0" />
+         </font>
+      </Button>
+   
+      <Label layoutX="460.0" layoutY="312.0" prefHeight="22.0" prefWidth="101.0" text="Mot de passe" textFill="WHITE">
+         <font>
+            <Font name="Roboto" size="15.0" />
+         </font>
+      </Label>
+      <Button id="but" fx:id="btn_connexion_inscri2" layoutX="511.0" layoutY="364.0" mnemonicParsing="false" onAction="#inscri" prefHeight="49.0" prefWidth="148.0" style="-fx-cursor: hand;" stylesheets="@../Style/style.css" text="Créer un compte">
+         <font>
+            <Font name="Roboto Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button id="btn:connexion:mdpoub" fx:id="btn_connexion_mdpoub" layoutX="542.0" layoutY="309.0" mnemonicParsing="false" onAction="#oublier" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="oublié" textFill="WHITE">
+         <font>
+            <Font name="Roboto" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="602.0" layoutY="312.0" prefHeight="22.0" prefWidth="17.0" text="?" textFill="WHITE">
+         <font>
+            <Font name="Roboto" size="15.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="tf_connexion_mdp" layoutX="360.0" layoutY="255.0" prefHeight="40.0" prefWidth="200.0" promptText="Mot de passe" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="470.0" stroke="BLACK" strokeType="INSIDE" width="248.0" />
+      <Label layoutX="17.0" layoutY="229.0" prefHeight="49.0" prefWidth="319.0" text="Your Iron " textAlignment="CENTER">
+         <font>
+            <Font name="Roboto Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="350.0" prefHeight="49.0" prefWidth="221.0" text="Starts Now !" textAlignment="CENTER">
+         <font>
+            <Font name="Roboto Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="294.0" prefHeight="49.0" prefWidth="319.0" text="Future " textAlignment="CENTER">
+         <font>
+            <Font name="Roboto Bold" size="40.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="174.0" fitWidth="200.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/10.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

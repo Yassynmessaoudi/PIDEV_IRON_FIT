@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="GUI.GestionCpController">
+   <children>
+      <ImageView fitHeight="449.0" fitWidth="790.0" layoutX="-175.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/8.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="82.0" layoutY="90.0" prefHeight="312.0" prefWidth="437.0" spacing="30.0">
+         <children>
+            <Button id="but1" fx:id="btn_ajoutercp" mnemonicParsing="false" onAction="#btn_ajoutcp" prefHeight="50.0" prefWidth="300.0" stylesheets="@../Style/style.css" text="Ajouter Code Promo" />
+            <Button id="but" fx:id="btn_suppcp" mnemonicParsing="false" onAction="#btn_Suppcp" prefHeight="50.0" prefWidth="300.0" stylesheets="@../Style/style.css" text="Supprimer Code Promo" />
+            <Button id="but1" fx:id="btn_modifiercp" mnemonicParsing="false" onAction="#btn_ModifierCP" prefHeight="50.0" prefWidth="300.0" stylesheets="@../Style/style.css" text="Modifier Code Promo" />
+            <Button id="but" fx:id="btn_affichercp" mnemonicParsing="false" onAction="#btn_AfficherCP" prefHeight="50.0" prefWidth="300.0" stylesheets="@../Style/style.css" text="Afficher les codes promos" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <Button id="but1" fx:id="btr91" layoutX="25.0" layoutY="19.0" mnemonicParsing="false" onAction="#Retour" prefHeight="46.0" prefWidth="149.0" style="-fx-font-weight: bold;" stylesheets="@../Style/style.css" text="Retour" />
+   </children>
+</AnchorPane>

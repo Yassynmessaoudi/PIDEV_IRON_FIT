@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionUserController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="802.0">
+         <children>
+            <ImageView fitHeight="564.0" fitWidth="813.0" layoutX="-112.0" layoutY="-87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/11.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="463.0" layoutX="538.0" stroke="BLACK" strokeType="INSIDE" width="317.0" />
+            <TextField id="tf_inscri_ident" fx:id="tf_inscri_ident" layoutX="75.0" layoutY="38.0" prefHeight="30.0" prefWidth="200.0" promptText="Nom">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField id="tf_inscri_email" fx:id="tf_inscri_email" layoutX="75.0" layoutY="104.0" prefHeight="30.0" prefWidth="200.0" promptText="E-mail">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Button id="but1" fx:id="btn_inscri_inscri" layoutX="128.0" layoutY="369.0" mnemonicParsing="false" onAction="#insc" prefHeight="22.0" prefWidth="124.0" style="-fx-cursor: hand;" styleClass="add-btn" stylesheets="@../Style/style.css" text="S'inscrire">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="345.0" layoutY="417.0" prefHeight="22.0" prefWidth="94.0" text="Déja client ?" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button id="btn_inscri_cnx" fx:id="btn_inscri_cnx" layoutX="430.0" layoutY="414.0" mnemonicParsing="false" onAction="#Retour" prefHeight="27.0" prefWidth="115.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Connecter !!" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Button>
+            <Line endX="100.0" endY="267.0" layoutX="-100.0" layoutY="346.0" startX="100.0" startY="-346.0" />
+            <TextField id="tf_inscri_age" fx:id="tf_inscri_age" layoutX="78.0" layoutY="295.0" prefHeight="30.0" prefWidth="200.0" promptText="Age ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="cb_inscri_rl" layoutX="307.0" layoutY="142.0" prefHeight="30.0" prefWidth="200.0" promptText="Role " />
+            <ComboBox fx:id="cb_inscri_sx" layoutX="307.0" layoutY="68.0" prefHeight="30.0" prefWidth="200.0" promptText="Sexe " />
+            <Button id="but" fx:id="Add_image_button" layoutX="307.0" layoutY="371.0" mnemonicParsing="false" onAction="#add_image_action" prefHeight="35.0" prefWidth="156.0" style="-fx-cursor: hand;" styleClass="add-btn" stylesheets="@../Style/style.css" text="Ajouter Photo">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="ImagePreviw" fitHeight="100.0" fitWidth="100.0" layoutX="357.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
+            <PasswordField fx:id="tf_inscri_mdp" layoutX="75.0" layoutY="172.0" prefHeight="30.0" prefWidth="200.0" promptText="Mot de passe " />
+            <PasswordField fx:id="tf_inscri_cfrmmdp" layoutX="75.0" layoutY="235.0" prefHeight="30.0" prefWidth="200.0" promptText="Confirmer " />
+            <Label layoutX="586.0" layoutY="214.0" text="Join us today and embark ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="557.0" layoutY="166.0" prefHeight="43.0" prefWidth="305.0" text="Unlock a world of possibilities! " underline="true">
+               <font>
+                  <Font name="Roboto Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="620.0" layoutY="279.0" text="Sign up now !">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="605.0" layoutY="247.0" text="on a journey to a healthier !">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="595.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/10.png" />
+               </image>
+            </ImageView>
+           
+         </children>
+      </AnchorPane>
+      <Label fx:id="imageLabel" prefHeight="34.0" prefWidth="71.0" visible="false" />
+   </children>
+</HBox>

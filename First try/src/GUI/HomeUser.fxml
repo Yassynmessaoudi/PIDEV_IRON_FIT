@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="806.0" prefWidth="1324.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeUserController">
+   <children>
+      <ImageView fitHeight="806.0" fitWidth="1324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/8.png" />
+         </image>
+      </ImageView>
+      <HBox fx:id="bottom_content" layoutY="725.0" prefHeight="80.0" prefWidth="1200.0" />
+      <PieChart fx:id="pieChart" layoutX="39.0" layoutY="150.0" />
+      <Label fx:id="lblNombreUtilisateurs" layoutX="524.0" layoutY="150.0" prefHeight="407.0" prefWidth="481.0">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Label fx:id="produit_btn" layoutX="97.0" layoutY="74.0" onDragDetected="#go_produits" onMousePressed="#go_produits" style="-fx-cursor: hand;" text="Produits" textAlignment="CENTER" textFill="#db0b0b">
+        <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <Label fx:id="evenement_btn" layoutX="367.0" layoutY="74.0" onDragDetected="#go_evenements" onMousePressed="#go_evenements" style="-fx-cursor: hand;" text="Abonnement" textFill="#db0b0b">
+           <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <Label fx:id="Reclamation_btn" layoutX="507.0" layoutY="74.0" onDragDetected="#Go_Reclamations" onMousePressed="#Go_Reclamations" style="-fx-cursor: hand;" text="Forum" textFill="#db0b0b">
+           <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <Label fx:id="activité_btn" layoutX="221.0" layoutY="74.0" onDragDetected="#go_activités" onMousePressed="#go_activités" style="-fx-cursor: hand;" text="Salle de sport" textFill="#db0b0b">
+          <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <Label fx:id="Channel_btn" layoutX="614.0" layoutY="74.0" onDragDetected="#go_channel" onMousePressed="#go_channel" style="-fx-cursor: hand;" text="****" textFill="#db0b0b">
+           <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <Label fx:id="dc_btn" layoutX="962.0" layoutY="81.0" onDragDetected="#Se_deconnecter" onMousePressed="#Se_deconnecter" style="-fx-cursor: hand;" text="Déconnecter" textFill="#db0b0b">
+          <font>
+      <Font name="Roboto Bold" size="15.0" />
+   </font>
+      </Label>
+      <ImageView fx:id="profile_btn" fitHeight="93.0" fitWidth="135.0" layoutX="806.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

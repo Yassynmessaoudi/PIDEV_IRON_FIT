@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="752.0" style="-fx-background-color: #8b9799;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterCPController">
+    <children>
+      <ImageView fitHeight="585.0" fitWidth="879.0" layoutX="-111.0" layoutY="-81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/11.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="352.0" layoutY="72.0" prefHeight="322.0" prefWidth="405.0" spacing="30.0">
+         <children>
+            <TextField fx:id="tf_code" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Code :" />
+            <TextField fx:id="tf_description" prefHeight="30.0" prefWidth="200.0" promptText="Description " />
+            <DatePicker fx:id="dp_datedexpiration" prefHeight="31.0" prefWidth="419.0" promptText="Date d'expiration" />
+            <Label fx:id="lb_cp" prefHeight="46.0" prefWidth="270.0">
+               <font>
+                  <Font name="Roboto Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="br_path" promptText="Entrer le chemin de votre code à barre " />
+            <Label fx:id="barcode_read" prefHeight="17.0" prefWidth="228.0">
+               <font>
+                  <Font name="Roboto Bold" size="15.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <Button id="but1" fx:id="ajoutercp" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="452.0" layoutY="441.0" mnemonicParsing="false" onAction="#ajoutercpAction" stylesheets="@../Style/style.css" text=" Ajouter Code Promo" />
+      <Button id="but1" fx:id="ajoutercb" layoutX="338.0" layoutY="385.0" mnemonicParsing="false" onAction="#ajoutercbAction" stylesheets="@../Style/style.css" text="Entrer le code à barre " />
+      <Button id="but1" fx:id="btn_barcoder" layoutX="573.0" layoutY="385.0" mnemonicParsing="false" onAction="#lirecbAction" stylesheets="@../Style/style.css" text="Lire le code à barre " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="508.0" stroke="BLACK" strokeType="INSIDE" width="311.0" />
+      <Button id="but1" fx:id="btr6" layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#Retour" prefHeight="35.0" prefWidth="123.0" style="-fx-font-weight: bold;" stylesheets="@../Style/style.css" text="Retour">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="160.0" fitWidth="173.0" layoutX="66.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/10.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="56.0" layoutY="379.0" text="Ajouter un code promo ! " underline="true">
+         <font>
+            <Font name="Roboto Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="226.0" prefHeight="43.0" prefWidth="341.0" style="-fx-font-style: roboto; -fx-font-weight: bold; -fx-background-size: 40;" text="Welcome " textFill="#0c2200">
+         <font>
+            <Font name="Roboto" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="328.0" prefHeight="43.0" prefWidth="341.0" style="-fx-font-style: roboto; -fx-font-weight: bold; -fx-background-size: 40;" text="Admin" textFill="#0c2200">
+         <font>
+            <Font name="Roboto" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="275.0" prefHeight="43.0" prefWidth="341.0" style="-fx-font-style: roboto; -fx-font-weight: bold; -fx-background-size: 40;" text="Back" textFill="#0c2200">
+         <font>
+            <Font name="Roboto" size="40.0" />
+         </font>
+      </Label>
+    
+    </children>
+</AnchorPane>
