@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AcceuilPlanningController">
+   <children>
+      <ImageView fitHeight="823.0" fitWidth="1041.0" layoutX="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/gym_dumbbells_inventory_219519_3840x2400.jpg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="651.0" prefWidth="230.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="234.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Be_Unbreakable_with_Iron_Fit-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Button id="purple" fx:id="Rdvbtm" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#handle_Rdvbtm" prefHeight="32.0" prefWidth="188.0" stylesheets="@../image/style.css" text="Prendre un rende_vous" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="19.0" right="30.0" top="294.0" />
+               </VBox.margin>
+               <textFill>
+                  <RadialGradient centerX="1.0" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
+            <Button id="red" fx:id="back" mnemonicParsing="false" onAction="#btnBack" prefHeight="31.0" prefWidth="84.0" stylesheets="@../image/style.css" text="BACK">
+               <VBox.margin>
+                  <Insets left="66.0" top="48.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" graphicTextGap="5.0" layoutX="652.0" layoutY="31.0" prefHeight="36.0" prefWidth="171.0" text="PLANNING" textFill="#f2f2f2">
+         <font>
+            <Font name="Arial Bold" size="31.0" />
+         </font>
+      </Label>
+      <Button id="blue" fx:id="ajouterPBtm" layoutX="1097.0" layoutY="575.0" mnemonicParsing="false" onAction="#handle_ajouterPBtm" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: grey;" stylesheets="@../image/style.css" text="Ajouter" />
+      <Button id="blue" fx:id="modifierPBtm" layoutX="944.0" layoutY="575.0" mnemonicParsing="false" onAction="#handle_modifierPBtm" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: grey;" stylesheets="@../image/style.css" text="Modifier" />
+      <Button id="blue" fx:id="rechercherPBtm" layoutX="1097.0" layoutY="102.0" mnemonicParsing="false" onAction="#field_rechercherPBtm" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: grey;" stylesheets="@../image/style.css" text="Rechercher" />
+      <Button id="blue" fx:id="SupprimerPBtm" layoutX="791.0" layoutY="575.0" mnemonicParsing="false" onAction="#handle_SupprimerPBtm" style="-fx-background-color: grey;" stylesheets="@../image/style.css" text="Supprimer" />
+      <ListView fx:id="planninglist" layoutX="250.0" layoutY="143.0" onContextMenuRequested="#handle_planninglist" prefHeight="417.0" prefWidth="985.0" />
+      <TextField fx:id="rechercherPChamp" layoutX="248.0" layoutY="102.0" onAction="#field_rechercherPChamp" prefHeight="41.0" prefWidth="850.0" />
+      <Button id="green" fx:id="excel" layoutX="318.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnexcel" stylesheets="@../image/style.css" text="Télécharger en Excel" />
+   </children>
+</AnchorPane>

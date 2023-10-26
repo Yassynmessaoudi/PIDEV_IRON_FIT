@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="759.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierPlanningController">
+   <children>
+      <ImageView fitHeight="873.0" fitWidth="639.0" layoutX="256.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/small-black-and-white-gym-v1fj4zunmazj4432.jpg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="864.0" prefWidth="278.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="282.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Be_Unbreakable_with_Iron_Fit-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Button id="red" fx:id="annulerp" mnemonicParsing="false" onAction="#handle_annulerp" prefHeight="38.0" prefWidth="207.0" stylesheets="@style.css" text="back">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="39.0" top="475.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Label layoutX="332.0" layoutY="41.0" text="Programme :" textFill="#fcfcfc" underline="true">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Label>
+      <Label layoutX="319.0" layoutY="114.0" text="Niveau du programme :" textFill="#fcfcfc" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="338.0" layoutY="196.0" text="Coach Id :" textFill="#f8f6f6" underline="true">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Label>
+      <Label layoutX="357.0" layoutY="265.0" text="Prix " textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Label>
+      <TextField fx:id="modP" layoutX="642.0" layoutY="42.0" onAction="#handle_modP" />
+      <TextField fx:id="coachid" layoutX="642.0" layoutY="188.0" onAction="#handle_coachid" />
+      <TextField fx:id="prix" layoutX="642.0" layoutY="266.0" onAction="#handle_prix" />
+      <Button id="blue" fx:id="modifierp" layoutX="525.0" layoutY="743.0" mnemonicParsing="false" onAction="#handle_modifierp" stylesheets="@../image/style.css" text="Modifier" />
+      <RadioButton fx:id="debutRD" layoutX="603.0" layoutY="117.0" mnemonicParsing="false" onAction="#handle_debutRD" text="Débutant" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="avRB" layoutX="786.0" layoutY="117.0" mnemonicParsing="false" onAction="#handle_avRB" text="Avancé" textFill="#ebe8e8">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></RadioButton>
+      <Label layoutX="358.0" layoutY="353.0" text="Video :" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Label>
+      <Label layoutX="305.0" layoutY="515.0" text="Description :" textFill="#fcfcfc" underline="true">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Label>
+      <TextField fx:id="video" layoutX="637.0" layoutY="354.0" onAction="#handle_videoField" />
+      <TextArea fx:id="description" layoutX="577.0" layoutY="450.0" onDragDetected="#handle_descriptionArea" prefHeight="209.0" prefWidth="267.0" />
+   </children>
+</AnchorPane>
