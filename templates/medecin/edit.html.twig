@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Medecin{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        /* Utilisez les mêmes styles que dans index.html.twig */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-container form {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .form-container label,
+        .form-container input {
+            margin-bottom: 10px;
+        }
+
+        .btn-info {
+            background-color: grey;
+            color: white;
+            border: 1px solid #888;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-save {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Nouveau style pour le titre */
+        h1.text-center {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h1 class="text-center">Modifier un Medecin</h1>
+        {{ include('medecin/_form.html.twig') }}
+        <div class="btn-group">
+            <a href="{{ path('app_medecin_index') }}" class="btn btn-info btn-small">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

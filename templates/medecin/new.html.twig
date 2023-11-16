@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Medecin{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Utilisez les mêmes styles que dans index.html.twig */
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 1px solid #888;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #555;
+            color: white;
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: #444;
+        }
+
+        .btn-info {
+            background-color: grey;
+            color: white;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #292b2c;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-save {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Nouveau style pour le titre */
+        h1.text-center {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container">
+        <h1 class="text-center">Créer un nouveau Medecin</h1>
+        {{ include('medecin/_form.html.twig') }}
+        <div class="btn-group">
+            <a href="{{ path('app_medecin_index') }}" class="btn btn-info btn-small">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}
