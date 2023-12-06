@@ -1,0 +1,52 @@
+
+<style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        font-size: medium;
+    }
+    .form-error input {
+        border: 1px solid red;
+    }
+
+</style>
+{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+{#<div class="form-container{{ form_errors(form) ? ' form-error' : '' }}">#}
+<div class="form-container form-error">
+<label for="{{ form.title.vars.id }}">Title:</label>
+{{ form_widget(form.title) }}
+<div class="error-message">
+    {{ form_errors(form.title) }}
+</div>
+
+<label for="{{ form.content.vars.id }}">Content:</label>
+{{ form_widget(form.content) }}
+<div class="error-message">
+    {{ form_errors(form.content) }}
+</div>
+
+<label for="{{ form.image.vars.id }}">Picture:</label>
+{{ form_widget(form.image) }}
+<div class="error-message">
+    {{ form_errors(form.image) }}
+</div>
+
+<label for="{{ form.location.vars.id }}">Location:</label>
+{{ form_widget(form.location) }}
+<div class="error-message">
+    {{ form_errors(form.location) }}
+</div>
+
+
+
+<label for="{{ form.user.vars.id }}">User:</label>
+{{ form_widget(form.user) }}
+<div class="error-message">
+    {{ form_errors(form.user) }}
+</div>
+</div>
+
+<button class="button" style="margin:20px;background-color:#5eb5e0 ">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

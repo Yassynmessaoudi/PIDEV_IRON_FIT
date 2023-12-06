@@ -3,46 +3,59 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
-#[ORM\Table(name: "post")]
-#[ORM\Index(name: "FK_User_Post", columns: ["user_id"])]
+#[ORM\HasLifecycleCallbacks]
 class Post
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "IDENTITY")]
-    #[ORM\Column(name: "id", type: "integer", nullable: false)]
-    private $id;
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(name: "title", type: "string", length: 255, nullable: true, options: ["default" => "NULL"])]
-    private $title = 'NULL';
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title = null;
 
-    #[ORM\Column(name: "content", type: "text", length: 65535, nullable: true, options: ["default" => "NULL"])]
-    private $content = 'NULL';
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
 
-    #[ORM\Column(name: "created_At", type: "datetime", nullable: true, options: ["default" => "NULL"])]
-    private $createdAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $created_At = null;
 
-    #[ORM\Column(name: "updated_At", type: "datetime", nullable: true, options: ["default" => "NULL"])]
-    private $updatedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updated_At = null;
 
-    #[ORM\Column(name: "status", type: "string", length: 255, nullable: true, options: ["default" => "NULL"])]
-    private $status = 'NULL';
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $status = null;
 
-    #[ORM\Column(name: "likes", type: "integer", nullable: true, options: ["default" => "NULL"])]
-    private $likes = NULL;
+    #[ORM\Column(nullable: true)]
+    private ?int $likes = null;
 
-    #[ORM\Column(name: "image", type: "string", length: 255, nullable: true, options: ["default" => "NULL"])]
-    private $image = 'NULL';
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
-    #[ORM\Column(name: "location", type: "string", length: 255, nullable: true, options: ["default" => "NULL"])]
-    private $location = 'NULL';
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $location = null;
 
-    #[ORM\ManyToOne(targetEntity: "User")]
+
+
+    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Commentaire::class)]
+    private Collection $commentaires;
+
+    #[ORM\ManyToOne(inversedBy: 'userPost')]
     #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id_user")]
-    private $user;
+    private ?User $user = null;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -54,7 +67,7 @@ class Post
         return $this->title;
     }
 
-    public function setTitle(?string $title): self
+    public function setTitle(?string $title): static
     {
         $this->title = $title;
 
@@ -66,33 +79,33 @@ class Post
         return $this->content;
     }
 
-    public function setContent(?string $content): self
+    public function setContent(?string $content): static
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->createdAt;
+        return $this->created_At;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(?\DateTimeImmutable $created_At): static
     {
-        $this->createdAt = $createdAt;
+        $this->created_At = $created_At;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->updatedAt;
+        return $this->updated_At;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTimeImmutable $updated_At): static
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_At = $updated_At;
 
         return $this;
     }
@@ -102,7 +115,7 @@ class Post
         return $this->status;
     }
 
-    public function setStatus(?string $status): self
+    public function setStatus(?string $status): static
     {
         $this->status = $status;
 
@@ -114,7 +127,7 @@ class Post
         return $this->likes;
     }
 
-    public function setLikes(?int $likes): self
+    public function setLikes(?int $likes): static
     {
         $this->likes = $likes;
 
@@ -126,7 +139,7 @@ class Post
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage(?string $image): static
     {
         $this->image = $image;
 
@@ -138,9 +151,63 @@ class Post
         return $this->location;
     }
 
-    public function setLocation(?string $location): self
+    public function setLocation(?string $location): static
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CategoryPost>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(CategoryPost $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(CategoryPost $category): static
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getPost() === $this) {
+                $commentaire->setPost(null);
+            }
+        }
 
         return $this;
     }
@@ -150,10 +217,28 @@ class Post
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new \DateTimeImmutable() );
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable() );
+    }
+
 }

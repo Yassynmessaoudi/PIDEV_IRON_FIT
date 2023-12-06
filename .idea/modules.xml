@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PIDEV_IRON_FIT-Integration-User-coach-salledesport.iml" filepath="$PROJECT_DIR$/.idea/PIDEV_IRON_FIT-Integration-User-coach-salledesport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PIDEV_IRON_FIT.iml" filepath="$PROJECT_DIR$/.idea/PIDEV_IRON_FIT.iml" />
     </modules>
   </component>
 </project>

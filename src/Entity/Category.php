@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\Table(name: "category")]
 class Category
 {
     #[ORM\Id]

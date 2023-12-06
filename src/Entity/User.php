@@ -215,4 +215,10 @@ public function getUserIdentifier(): string
     // Dans votre cas, vous utilisez 'mail' comme identifiant.
     return $this->mail;
 }
+
+    public  function __toString()
+    {
+        return $this->username;
+    }
+
 }

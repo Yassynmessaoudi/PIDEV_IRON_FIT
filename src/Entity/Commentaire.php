@@ -1,49 +1,46 @@
 <?php
+
 namespace App\Entity;
 
 use App\Repository\CommentaireRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
-#[ORM\Table(name: "commentaire")]
-#[ORM\Index(name: "FK_Post_Commentaire", columns: ["post_id"])]
-#[ORM\Index(name: "FK_User_Commentaire", columns: ["user_id"])]
+#[ORM\HasLifecycleCallbacks]
 class Commentaire
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "IDENTITY")]
-    #[ORM\Column(name: "id", type: "integer", nullable: false)]
-    private $id;
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(name: "content", type: "string", length: 255, nullable: true, options: ["default" => "NULL"])]
-    private $content = 'NULL';
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $content = null;
 
-    #[ORM\Column(name: "created_At", type: "datetime", nullable: true, options: ["default" => "NULL"])]
-    private $createdAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $created_At = null;
 
-    #[ORM\Column(name: "updated_At", type: "datetime", nullable: true, options: ["default" => "NULL"])]
-    private $updatedAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updated_At = null;
 
-    #[ORM\Column(name: "reportedCount", type: "integer", nullable: true, options: ["default" => "NULL"])]
-    private $reportedcount = NULL;
+    #[ORM\Column(nullable: true)]
+    private ?int $reportedCount = null;
 
-    #[ORM\Column(name: "isFlagged", type: "boolean", nullable: true, options: ["default" => "NULL"])]
-    private $isflagged = 'NULL';
+    #[ORM\Column(nullable: true)]
+    private ?bool $isFlagged = null;
 
-    #[ORM\Column(name: "isApproved", type: "boolean", nullable: true, options: ["default" => "NULL"])]
-    private $isapproved = 'NULL';
+    #[ORM\Column(nullable: true)]
+    private ?bool $isApproved = null;
 
-    #[ORM\Column(name: "isDeleted", type: "boolean", nullable: true, options: ["default" => "NULL"])]
-    private $isdeleted = 'NULL';
+    #[ORM\Column(nullable: true)]
+    private ?bool $isDeleted = null;
 
-    #[ORM\ManyToOne(targetEntity: "Post")]
-    #[ORM\JoinColumn(name: "post_id", referencedColumnName: "id")]
-    private $post;
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    private ?Post $post = null;
 
     #[ORM\ManyToOne(targetEntity: "User")]
-    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id_user")]
-    private $user;
+    #[ORM\JoinColumn(name: "id", referencedColumnName: "id_user")]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -55,81 +52,81 @@ class Commentaire
         return $this->content;
     }
 
-    public function setContent(?string $content): self
+    public function setContent(?string $content): static
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->createdAt;
+        return $this->created_At;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(?\DateTimeImmutable $created_At): static
     {
-        $this->createdAt = $createdAt;
+        $this->created_At = $created_At;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->updatedAt;
+        return $this->updated_At;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTimeImmutable $updated_At): static
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_At = $updated_At;
 
         return $this;
     }
 
-    public function getReportedcount(): ?int
+    public function getReportedCount(): ?int
     {
-        return $this->reportedcount;
+        return $this->reportedCount;
     }
 
-    public function setReportedcount(?int $reportedcount): self
+    public function setReportedCount(?int $reportedCount): static
     {
-        $this->reportedcount = $reportedcount;
+        $this->reportedCount = $reportedCount;
 
         return $this;
     }
 
-    public function isIsflagged(): ?bool
+    public function isIsFlagged(): ?bool
     {
-        return $this->isflagged;
+        return $this->isFlagged;
     }
 
-    public function setIsflagged(?bool $isflagged): self
+    public function setIsFlagged(?bool $isFlagged): static
     {
-        $this->isflagged = $isflagged;
+        $this->isFlagged = $isFlagged;
 
         return $this;
     }
 
-    public function isIsapproved(): ?bool
+    public function isIsApproved(): ?bool
     {
-        return $this->isapproved;
+        return $this->isApproved;
     }
 
-    public function setIsapproved(?bool $isapproved): self
+    public function setIsApproved(?bool $isApproved): static
     {
-        $this->isapproved = $isapproved;
+        $this->isApproved = $isApproved;
 
         return $this;
     }
 
-    public function isIsdeleted(): ?bool
+    public function isIsDeleted(): ?bool
     {
-        return $this->isdeleted;
+        return $this->isDeleted;
     }
 
-    public function setIsdeleted(?bool $isdeleted): self
+    public function setIsDeleted(?bool $isDeleted): static
     {
-        $this->isdeleted = $isdeleted;
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }
@@ -139,7 +136,7 @@ class Commentaire
         return $this->post;
     }
 
-    public function setPost(?Post $post): self
+    public function setPost(?Post $post): static
     {
         $this->post = $post;
 
@@ -151,10 +148,22 @@ class Commentaire
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
         return $this;
+    }
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setUpdatedAt(new \DateTimeImmutable() );
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable() );
     }
 }

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block body %}
+<div class="w3-content" style="max-width:900px;margin:400px;margin-top: 50px">
+    <!-- Grid -->
+    <div class="w3-row">
+        <h1><strong>NEW POST</strong></h1>
+
+    {{ include('post/_form.html.twig') }}
+
+    <a href="{{ path('app_post_index') }}">back to list</a>
+    </div>
+</div>
+
+{% endblock %}
