@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Abonnement{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+      
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 1px solid #888;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #555;
+            color: white;
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: #444;
+        }
+
+        .btn-info {
+            background-color: grey;
+            color: white;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #292b2c;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between; 
+            width: 100%; 
+            margin-top: 20px;
+        }
+
+        .btn-save {
+            font-size: 18px; 
+            padding: 10px 20px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+  
+        h1.text-center {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container">
+        <h1 class="text-center">Créer un nouvel Abonnement</h1>
+        {{ include('abonnement/_form.html.twig') }}
+        <div class="btn-group">
+            <a href="{{ path('app_abonnement_indexuser') }}" class="btn btn-info btn-small">Retour à la liste</a>
+        </div>
+    </div>
+
+ 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#abonnement_type').change(function() {
+                var selectedType = $(this).val();
+                var prixField = $('#abonnement_prix'); 
+
+              
+                switch (selectedType) {
+                    case 'monthly':
+                        prixField.val('100');
+                        break;
+                    case 'premium':
+                        prixField.val('80');
+                        break;
+                    case 'marie':
+                        prixField.val('120');
+                        break;
+                    case 'freres':
+                    case 'mineur':
+                        prixField.val('110');
+                        break;
+                    case 'offre 1 year':
+                        prixField.val('500');
+                        break;
+                    default:
+                        prixField.val('');
+                        break; 
+                }
+            });
+        });
+        $(document).ready(function() {
+    $('#abonnement_type').change(function() {
+        updateEndDate(); 
+    });
+
+    $('#abonnement_datedebut').change(function() {
+        updateEndDate(); 
+    });
+
+    function updateEndDate() {
+        var selectedType = $('#abonnement_type').val();
+        var startDate = $('#abonnement_datedebut').val();
+        var endDateField = $('#abonnement_datefin');
+
+        if (startDate !== '' && selectedType !== '') {
+            var startDateObj = new Date(startDate);
+            var endDateObj = new Date(startDateObj); 
+
+            switch (selectedType) {
+                case 'monthly':
+                case 'premium':
+                case 'marie':
+                case 'freres':
+                case 'mineur':
+                    endDateObj.setMonth(endDateObj.getMonth() + 1); 
+                    break;
+                case 'offre 1 year':
+                    endDateObj.setFullYear(endDateObj.getFullYear() + 1);
+                    break;
+                default:
+                    break;
+            }
+
+          
+            var formattedEndDate = endDateObj.toISOString().slice(0, 10);
+            endDateField.val(formattedEndDate);
+        }
+    }
+});
+
+
+    </script>
+{% endblock %}

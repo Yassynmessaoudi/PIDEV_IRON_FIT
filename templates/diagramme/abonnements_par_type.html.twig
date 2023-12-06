@@ -1,0 +1,34 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Diagramme des abonnements par type{% endblock %}
+
+{% block body %}
+ <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+    <h1>Diagramme des abonnements par type</h1>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+</div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+            const abonnementsParType = {{ abonnementsParType|json_encode|raw }};
+            const chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Abonnements par type"
+                },
+                data: [{
+                    type: "pie",
+                    showInLegend: true,
+                    legendText: "{label}",
+                    toolTipContent: "{label}: <strong>{y}</strong>",
+                    dataPoints: [
+                        {% for type, count in abonnementsParType %}
+                            { label: "{{ type }}", y: {{ count }} },
+                        {% endfor %}
+                    ]
+                }]
+            });
+            chart.render();
+        }
+    </script>
+{% endblock %}

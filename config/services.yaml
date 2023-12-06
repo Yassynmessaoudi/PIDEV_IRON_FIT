@@ -1,0 +1,21 @@
+parameters:
+   images_directory: '%kernel.project_dir%/public/images'
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # You can add additional service definitions when you need explicit configuration.
+    # For example, if you have a custom repository for your User entity, you can define it as a service:
+    App\Repository\UserRepository:
+        arguments:
+            - '@Doctrine\Persistence\ManagerRegistry'
+            - 'App\Entity\User'

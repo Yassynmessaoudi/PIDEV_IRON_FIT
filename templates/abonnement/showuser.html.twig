@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+       
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            background-color: #333; 
+            color: white; 
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+       
+        .btn-edit {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            background-color: black; 
+            color: white; 
+            border: 1px solid #333; 
+            margin-top: 20px;
+        }
+
+      
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-top: 20px;
+        }
+
+       
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th, .table-container td {
+            border: 1px solid #888;
+            padding: 15px; 
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #555;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container">
+        <h1 style="font-size: 2em; margin-bottom: 20px; color: white;">Abonnement</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ abonnement.id }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ abonnement.type }}</td>
+                </tr>
+                <tr>
+                    <th>Datedebut</th>
+                    <td>{{ abonnement.datedebut }}</td>
+                </tr>
+                <tr>
+                    <th>Datefin</th>
+                    <td>{{ abonnement.datefin }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ abonnement.prix }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+            <a href="{{ path('app_abonnement_indexuser') }}" class="btn btn-back">Back to List</a>
+        </div>
+
+    </div>
+{% endblock %}

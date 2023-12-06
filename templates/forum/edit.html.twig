@@ -1,0 +1,91 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Edit Forum{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        /* Utilisez les mêmes styles que dans index.html.twig */
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; /* Changement de la couleur du fond du conteneur */
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black; /* Bordure noire */
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            color: black; /* Contenu du tableau en noir */
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; /* Bordure noire */
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: white; /* Fond blanc pour l'en-tête */
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: white; /* Fond blanc pour les lignes paires */
+        }
+
+        .table-container tr:nth-child(odd) {
+            background-color: #eee; /* Fond gris clair pour les lignes impaires */
+        }
+
+        .btn-info,
+        .btn-warning {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            color: white; /* Changement de la couleur du texte des boutons en blanc */
+            margin-right: 10px;
+        }
+
+        .btn-info {
+            background-color: grey;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn-create {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white; /* Changement de la couleur du texte du bouton en blanc */
+        }
+    </style>
+{% endblock %}
+{% block body %}
+        <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;"
+
+    <h1>Edit Forum</h1>
+
+    {{ include('forum/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_forum_index') }}">back to list</a>
+
+    {{ include('forum/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

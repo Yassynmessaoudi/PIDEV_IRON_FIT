@@ -1,0 +1,50 @@
+{% extends 'basedb.html.twig' %}
+
+{% block body %}
+    <div align="center" class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px; background-color: #1e1e1e; color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);">
+        <h2 style="color: #da2424;">Ajouter un code promo</h2>
+        <br> 
+        {{ form_start(form) }}
+        
+        {# Champ 'code' #}
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.code, null, {'label_attr': {'style': 'color: #da2424;'}}) }}
+            {{ form_widget(form.code, {'attr': {'style': 'width: 300px; padding: 8px; border: 1px solid #da2424; border-radius: 3px; color: #1e1e1e;'}}) }}
+            {{ form_errors(form.code) }}
+        </div>
+
+        {# Champ 'description' #}
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.description, null, {'label_attr': {'style': 'color: #da2424;'}}) }}
+            {{ form_widget(form.description, {'attr': {'style': 'width: 300px; padding: 8px; border: 1px solid #da2424; border-radius: 3px; color: #1e1e1e;'}}) }}
+            {{ form_errors(form.description) }}
+        </div>
+
+        {# Champ 'datedexpiration' #}
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.datedexpiration, null, {'label_attr': {'style': 'color: #da2424;'}}) }}
+            {{ form_widget(form.datedexpiration, {'attr': {'style': 'width: 300px; padding: 8px; border: 1px solid #da2424; border-radius: 3px; color: #1e1e1e;'}}) }}
+            {{ form_errors(form.datedexpiration) }}
+        </div>
+
+        {# Champ 'used' #}
+        <div style="margin-bottom: 15px;">
+            {{ form_label(form.used, null, {'label_attr': {'style': 'color: #da2424;'}}) }}
+            {{ form_widget(form.used, {'attr': {'style': 'width: 300px; padding: 8px; border: 1px solid #da2424; border-radius: 3px; color: #1e1e1e;'}}) }}
+            {{ form_errors(form.used) }}
+        </div>
+
+        {# Bouton de soumission #}
+        <button type="submit" style="background-color: #da2424; color: white; padding: 10px 20px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); border-radius: 3px;">
+            Soumettre
+        </button>
+
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_admin') }}" 
+           class="btn btn-return" 
+           style="background-color: #da2424; color: white; padding: 10px 20px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); border-radius: 3px; margin-top: 15px;">
+            Retourner
+        </a>
+    </div>
+{% endblock %}

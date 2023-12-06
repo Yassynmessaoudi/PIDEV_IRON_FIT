@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}votre panier{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #F8F8FF; /* Couleur de fond légère */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            background-color: #f2f2f2; /* Couleur de fond du titre */
+            color: #fff; /* Couleur du texte du titre */
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            background-color: #fff; /* Couleur de fond du tableau */
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #F8F8FF; /* Couleur de fond de l'en-tête du tableau */
+            color:#000000; /* Couleur du texte de l'en-tête du tableau */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #F8F8FF; /* Couleur de fond des lignes paires du corps du tableau */
+        }
+
+        tfoot tr {
+            background-color: #F8F8FF; /* Couleur de fond du pied de tableau */
+        }
+
+        .btn-dynamic {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            background-color: #778899; /* Couleur de fond du bouton de succès */
+            color: #fff; /* Couleur du texte du bouton de succès */
+        }
+
+        .btn-warning {
+            background-color: #B0C4DE; /* Couleur de fond du bouton d'avertissement */
+            color: #000; /* Couleur du texte du bouton d'avertissement */
+        }
+
+        .btn-danger {
+            background-color: #696969; /* Couleur de fond du bouton de danger */
+            color: #fff; /* Couleur du texte du bouton de danger */
+        }
+
+        .btn-primary {
+            background-color: #000000; /* Couleur de fond du bouton primaire */
+            color: #fff; /* Couleur du texte du bouton primaire */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Paiement</h1>
+    </section>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in dataPanier %}
+                <tr>
+                    <td>{{ element.product.productName }}</td>
+                    <td class="text-end">{{ element.product.price }} dt</td>
+                    <td>{{ element.quantity }}</td>
+                    <td class="text-end">{{ element.quantity * element.product.price }} dt</td>
+                    <td>
+                        <a href="{{path("app_cart_add", {id: element.product.id})}}" class="btn btn-success btn-dynamic">Add
+                            <i class="bi bi-cart-plus"></i>
+                        </a>
+                        <a href="{{path("remove", {id: element.product.id})}}" class="btn btn-warning btn-dynamic">delate
+                            <i class="bi bi-cart-dash"></i>
+                        </a>
+                        <a href="{{path("delete", {id: element.product.id})}}" class="btn btn-danger btn-dynamic">Delate all
+                            <i class="bi bi-cart-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-end">{{ total }} dt</td>
+                <td>
+                    <a href="{{path("delete_all")}}" class="btn btn-danger btn-dynamic">Remove the cart
+                        <i class="bi bi-cart-x"></i>
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+<form action="/checkout" method="POST" class="mt-3 mb-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary btn-lg btn-dynamic me-2">Payer</button>
+</form>
+<div class="d-flex justify-content-center">
+    <a href="{{ path('app_shop') }}" class="btn btn-primary btn-dynamic">Retour à la boutique</a>
+</div>
+
+{% endblock %}

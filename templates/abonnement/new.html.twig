@@ -1,0 +1,193 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Nouvel Abonnement{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+      <style>
+      
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; 
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black; 
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            color: black; 
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; 
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: white; 
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: white; 
+        }
+
+        .table-container tr:nth-child(odd) {
+            background-color: #eee; 
+        }
+
+        .btn-info,
+        .btn-warning {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .btn-info {
+            background-color: grey;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn-create {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+    <h1 style="font-size: 2em; margin-bottom: 20px; color: black;">Créer un nouvel Abonnement</h1>
+    
+    <div class="form-container">
+
+         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-field">
+                {{ form_row(form.type) }}
+                <span class="error">{{ form_errors(form.type) }}</span>
+            </div>
+
+            <div class="form-field">
+                {{ form_row(form.datedebut) }}
+                <span class="error">{{ form_errors(form.datedebut) }}</span>
+            </div>
+
+            <div class="form-field">
+                {{ form_row(form.datefin, { 'attr': {'readonly': 'readonly'} }) }}
+                <span class="error">{{ form_errors(form.datefin) }}</span>
+            </div>
+
+            <div class="form-field">
+                {{ form_row(form.prix, { 'attr': {'readonly': 'readonly'} }) }}
+                <span class="error">{{ form_errors(form.prix) }}</span>
+            </div>
+
+            <div class="form-field">
+                {{ form_row(form.idsalledesport) }}
+                <span class="error">{{ form_errors(form.idsalledesport) }}</span>
+            </div>
+            
+            <div class="button-group">
+                <a href="{{ path('app_abonnement_index') }}" class="btn btn-info btn-small">Retour à la liste</a>
+                <button type="submit" class="btn btn-dark btn-small">Save</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#abonnement_type').change(function() {
+                var selectedType = $(this).val();
+                var prixField = $('#abonnement_prix'); 
+
+                switch (selectedType) {
+                    case 'monthly':
+                        prixField.val('100');
+                        break;
+                    case 'premium':
+                        prixField.val('80');
+                        break;
+                    case 'marie':
+                        prixField.val('120');
+                        break;
+                    case 'freres':
+                    case 'mineur':
+                        prixField.val('110');
+                        break;
+                    case 'offre 1 year':
+                        prixField.val('500');
+                        break;
+                    default:
+                        prixField.val('');
+                        break; 
+                }
+            });
+        });
+        $(document).ready(function() {
+    $('#abonnement_type').change(function() {
+        updateEndDate(); 
+    });
+
+    $('#abonnement_datedebut').change(function() {
+        updateEndDate(); 
+    });
+
+    function updateEndDate() {
+        var selectedType = $('#abonnement_type').val();
+        var startDate = $('#abonnement_datedebut').val();
+        var endDateField = $('#abonnement_datefin');
+
+        if (startDate !== '' && selectedType !== '') {
+            var startDateObj = new Date(startDate);
+            var endDateObj = new Date(startDateObj); 
+            switch (selectedType) {
+                case 'monthly':
+                case 'premium':
+                case 'marie':
+                case 'freres':
+                case 'mineur':
+                    endDateObj.setMonth(endDateObj.getMonth() + 1); 
+                    break;
+                case 'offre 1 year':
+                    endDateObj.setFullYear(endDateObj.getFullYear() + 1); 
+                    break;
+                default:
+                    break;
+            }
+
+            
+            var formattedEndDate = endDateObj.toISOString().slice(0, 10);
+            endDateField.val(formattedEndDate);
+        }
+    }
+});
+
+    </script>
+{% endblock %}

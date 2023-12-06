@@ -1,0 +1,38 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+<div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+ 
+    <h1>Forum</h1>
+
+    <table class="table">
+     
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forum.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ forum.date ? forum.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Admin</th>
+                <td>{{ forum.Admin }}</td>
+            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ forum.intitule }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_forum_index') }}">back to list</a>
+
+    <a href="{{ path('app_forum_edit', {'id': forum.id}) }}">edit</a>
+
+    {{ include('forum/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

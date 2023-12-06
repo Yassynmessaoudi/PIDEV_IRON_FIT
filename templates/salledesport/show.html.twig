@@ -1,0 +1,125 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Salledesport{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+      
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; 
+            color: black; 
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black; 
+            margin-top: 20px;
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; 
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: black; 
+            color: white; 
+        }
+
+        .btn-back,
+        .btn-edit {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            color: white; 
+        }
+
+        .btn-back {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-right: 10px;
+        }
+
+        .btn-edit {
+            background-color: black;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: black; 
+        }
+
+        img {
+            max-width: 100%; 
+            height: auto; 
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+      <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+        <h1>Salledesport</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ salledesport.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ salledesport.adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Capacite</th>
+                    <td>{{ salledesport.capacite }}</td>
+                </tr>
+                <tr>
+                    <th>Specialite</th>
+                    <td>{{ salledesport.specialite }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        {% if salledesport.photo %}
+                            <img src="{{ asset(salledesport.photo) }}" alt="Photo de la salle de sport">
+                        {% else %}
+                            Aucune image disponible
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+            <a href="{{ path('app_salledesport_index') }}" class="btn btn-back">Retour à la liste</a>
+            <a href="{{ path('app_salledesport_edit', {'idsalledesport': salledesport.idsalledesport}) }}" class="btn btn-edit">Modifier</a>
+        </div>
+
+        {{ include('salledesport/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

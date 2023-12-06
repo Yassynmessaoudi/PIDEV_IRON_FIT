@@ -1,0 +1,50 @@
+{% extends 'basedb.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 style="color: white">Modifier User</h1>
+        <br>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <table align="center" border="1" style="color: white;">
+            <tr>
+                <td>{{ form_label(form.username, "Username :") }}</td>
+                <td>{{ form_widget(form.username, {'attr': {'style': 'width: 300px; height: 20;'}}) }}</td>
+                <td>{{ form_errors(form.username) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(form.age, "Age :") }}</td>
+                <td>{{ form_widget(form.age, {'attr': {'style': 'width: 300px; height: 20;'}}) }}</td>
+                <td>{{ form_errors(form.age) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(form.sexe, "Sexe :") }}</td>
+                <td>{{ form_widget(form.sexe , {'attr': {'style': 'width: 300; height: 20;'}})}}</td>
+                <td>{{ form_errors(form.sexe) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(form.role, "Role :", {'label_attr': {'class': 'role'}}) }}</td>
+                <td>{{ form_widget(form.role, {'attr': {'style': 'width: 300px; height: 20;'}}) }}</td>
+                <td>{{ form_errors(form.role) }}</td>
+            </tr>
+           
+            <tr>
+                <td>{{ form_label(form.mail, "Email :") }}</td>
+                <td>{{ form_widget(form.mail, {'attr': {'style': 'width: 300px; height: 20;'}}) }}</td>
+                <td>{{ form_errors(form.mail) }}</td>
+            </tr>
+            <tr>
+                <td>{{ form_label(form.mdp, "Password :") }}</td>
+                <td>{{ form_widget(form.mdp, {'attr': {'style': 'width: 300px; height: 20;'}}) }}</td>
+                <td>{{ form_errors(form.mdp) }}</td>
+            </tr>
+        </table>
+
+        {{ form_row(form.Save) }}
+        {{ form_end(form) }}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .artistic-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .video-container, .planning-details {
+            flex: 1;
+        }
+        .planning-details {
+            text-align: center;
+        }
+         .btn-recommend {
+            float: right;
+
+        }
+     
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="artistic-container">
+        <nav>
+        <br>
+             <div class="video-container">
+                <iframe id="youtube-video" width="560" height="322" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </nav>
+        <aside>
+            
+
+            <div class="planning-details">
+                <h2><strong>{{ planning.programme }}</strong></h2>
+                <p>{{ planning.description }}</p>
+                <p><strong>Niveau : </strong>{{ planning.niveauProgramme }}</p>
+                 <p><strong>Coach : </strong>{{ planning.idCoach().username }}</p>
+                <p><strong>Prix : </strong>{{ planning.prix }} Dinars</p>
+                <!-- Add more details here -->
+            </div>
+
+            <div class="actions">
+                 <a href="{{ path('app_mainplanning') }}" class="btn btn-dark">Retour à la liste</a>
+               <a href="{{ path('app_mainplanning_recommande', {'id': planning.idplanning}) }}" class="btn btn-dark btn-recommend">Recommander</a>
+            </div>
+        </aside>
+    </div>
+    <script>
+        const vidurl = '{{ planning.videolink }}';
+        fetch(`https://noembed.com/embed?dataType=json&url=${vidurl}`)
+            .then(res => res.json())
+            .then(data => {
+                const videoId = data.url.split('v=')[1];
+                document.getElementById('youtube-video').src = `https://www.youtube.com/embed/${videoId}`;
+            });
+    </script>
+{% endblock %}
