@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Regime{% endblock %}
+
+{% block body %}
+    <h1>Regime</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ regime.id }}</td>
+            </tr>
+            <tr>
+                <th>PrixRegime</th>
+                <td>{{ regime.prixRegime }}</td>
+            </tr>
+            <tr>
+                <th>TypeRegime</th>
+                <td>{{ regime.typeRegime }}</td>
+            </tr>
+            <tr>
+                <th>PrenomMED</th>
+                <td>{{ regime.prenomMED }}</td>
+            </tr>
+            <tr>
+                <th>Reg</th>
+                <td>{{ regime.reg }}</td>
+            </tr>
+            <tr>
+                <th>Idmed</th>
+                <td>{{ regime.idmed }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_regime_index') }}">back to list</a>
+
+    <a href="{{ path('app_regime_edit', {'id': regime.id}) }}">edit</a>
+
+    {{ include('regime/_delete_form.html.twig') }}
+{% endblock %}

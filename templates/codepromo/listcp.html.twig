@@ -1,0 +1,45 @@
+{% extends 'basedb.html.twig' %}
+
+{% block body %}
+    <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-left: 300px; padding: 20px; margin-top: 50px;">
+        {% for codepromos in codepromos %}
+            <div class="grid-item" style="background-color: #666; color: white; padding: 15px; border-radius: 5px;">
+                <h3>{{ codepromos.code }}</h3>
+                <p><strong>Date d'expiration:</strong> {{ codepromos.datedexpiration }}</p>
+                <p><strong>Description:</strong> {{ codepromos.description }}</p>
+                <div>
+                    <a href="{{ path('codepromo_edit', {'id':  codepromos.idCodepromo}) }}" 
+                       class="btn btn-edit" 
+                       style="background-color: #da2424; color: white; padding: 8px 12px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px; margin-right: 5px;">
+                        Modifier
+                    </a>
+                    <a href="{{ path('codepromo_delete', {'id':  codepromos.idCodepromo}) }}" 
+                       class="btn btn-delete" 
+                       style="background-color: #da2424; color: white; padding: 8px 12px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px;">
+                        Supprimer
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div align="center" style="margin-left: 300px; margin-top: 20px;">
+    
+     <a href="{{ path('codepromo_add') }}" 
+           class="btn btn-return" 
+           style="background-color: #da2424; color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px;">
+            Ajouter 
+        </a>
+        <a href="{{ path('app_admin') }}" 
+           class="btn btn-return" 
+           style="background-color: #da2424; color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px; margin-right: 10px;">
+            Retourner
+        </a>
+        <a href="{{ path('export_data') }}" 
+           class="btn btn-return" 
+           style="background-color: #da2424; color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px;">
+            Télécharger en Excel
+        </a>
+        
+    </div>
+{% endblock %}

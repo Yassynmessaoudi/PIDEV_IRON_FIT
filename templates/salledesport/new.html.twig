@@ -1,0 +1,112 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Nouvelle Salledesport{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+       
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; 
+            color: black; 
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black;
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            color: black; 
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; 
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: black; 
+            color: white; 
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: #eee; 
+        }
+
+        .btn-info {
+            background-color: grey;
+            color: white;
+            border: 1px solid #888;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-warning {
+            background-color: black;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #292b2c;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-small {
+            padding: 5px 10px; 
+            font-size: 14px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+    
+        h1.text-center {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: black; 
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+        <h1 class="text-center">Créer une nouvelle Salledesport</h1>
+        {{ include('salledesport/_form.html.twig') }}
+        <div class="btn-group">
+            <a href="{{ path('app_salledesport_index') }}" class="btn btn-info btn-small">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

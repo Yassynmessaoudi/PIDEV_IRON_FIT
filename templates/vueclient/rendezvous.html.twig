@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+   body {
+            text-align: center;
+        
+        }
+        .btn-success {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white; /* Changement de la couleur du texte du bouton en blanc */
+        }
+        select {
+            max-width: 200px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+{% block title %}Rendez-vous{% endblock %}
+
+{% block body %}
+    <h1>Rendez-vous</h1>
+
+  <form method="post">
+    <div class="form-group">
+        <label for="client">Client</label>
+       <select id="client" name="client" class="form-control">
+    {% for client in clients %}
+      <option value="{{ client.getUsername() }}">{{ client.getUsername() }}</option>
+    {% endfor %}
+</select>
+
+    </div>
+    <button type="submit">Voir les rendez-vous</button>
+</form>
+
+{% endblock %}

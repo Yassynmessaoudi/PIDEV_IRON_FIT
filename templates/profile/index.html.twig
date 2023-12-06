@@ -1,0 +1,14 @@
+{# templates/profile/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}'s Profile{% endblock %}
+
+{% block body %}
+    <h1>{{ user.username }}'s Profile</h1>
+    <p>Age: {{ user.age }}</p>
+    <p>Email: {{ user.mail }}</p>
+    <p>Role: {{ user.role }}</p>
+    <p>Sexe: {{ user.sexe }}</p>
+    <img src="{{ asset('uploads/' ~ user.image) }}" alt="{{ user.username }}'s Profile Picture">
+{% endblock %}

@@ -1,0 +1,108 @@
+
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cabinet Form</h5>
+
+                    <!-- Symfony Form -->
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+
+                    {# Cabinet Name #}
+                    <div class="row mb-3">
+                        {{ form_label(form.nomMED, 'Cabinet Name', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.nomMED, {'attr': {'class': 'form-control' , 'placeholder' : 'Enter Name of Medecin'}}) }}
+                            {% if form_errors(form.nomMED) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.nomMED) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Cabinet First Name #}
+                    <div class="row mb-3">
+                        {{ form_label(form.prenomMED, 'Cabinet First Name', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.prenomMED, {'attr': {'class': 'form-control' , 'placeholder' : 'Enter Frist Name of Medecin'}}) }}
+                            {% if form_errors(form.prenomMED) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.prenomMED) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Cabinet Speciality #}
+                    <div class="row mb-3">
+                        {{ form_label(form.specialite, 'Cabinet Speciality', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.specialite, {'attr': {'class': 'form-control'}}) }}
+                            {% if form_errors(form.specialite) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.specialite) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Cabinet Address #}
+                    <div class="row mb-3">
+                        {{ form_label(form.adresse, 'Cabinet Address', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.adresse, {'attr': {'class': 'form-control' , 'placeholder':'Cabinet Full Address ...'}}) }}
+                            {% if form_errors(form.adresse) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.adresse) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Cabinet Email #}
+                    <div class="row mb-3">
+                        {{ form_label(form.email, 'Cabinet Email', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder':'Medecin E-mail'}}) }}
+                            {% if form_errors(form.email) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.email) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Cabinet Phone #}
+                    <div class="row mb-3">
+                        {{ form_label(form.tel, 'Cabinet Phone', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.tel, {'attr': {'class': 'form-control', 'placeholder':'phone number'}}) }}
+                            {% if form_errors(form.tel) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.tel) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                    {# Submit Button #}
+                    <div class="row mb-3">
+                        <div class="col-sm-2 col-form-label"></div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Save Cabinet</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                    <!-- End Symfony Form -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+

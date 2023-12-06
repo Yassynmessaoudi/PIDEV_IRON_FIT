@@ -1,0 +1,117 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+     <style>
+       
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; 
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black; 
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            color: black; 
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; 
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: white;
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: white;
+        }
+
+        .table-container tr:nth-child(odd) {
+            background-color: #eee; 
+        }
+
+        .btn-info,
+        .btn-warning {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            color: white; 
+            margin-right: 10px;
+        }
+
+        .btn-info {
+            background-color: grey;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn-create {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+        <h1 style="font-size: 2em; margin-bottom: 20px; color: black;">Abonnement</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ abonnement.id }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ abonnement.type }}</td>
+                </tr>
+                <tr>
+                    <th>Datedebut</th>
+                    <td>{{ abonnement.datedebut }}</td>
+                </tr>
+                <tr>
+                    <th>Datefin</th>
+                    <td>{{ abonnement.datefin }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ abonnement.prix }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+            <a href="{{ path('app_abonnement_index') }}" class="btn btn-warning">Back to List</a>
+            <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}" class="btn btn-dark">Edit</a>
+            {{ include('abonnement/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

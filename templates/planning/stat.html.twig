@@ -1,0 +1,32 @@
+{% extends 'basedb.html.twig' %}
+
+{% block body %}
+   <canvas id="myChart" style="margin-left: 300px;margin-top: 100px;"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ planningNames|json_encode|raw }}, // Les noms des plannings
+        
+        datasets: [{
+            label: '# de rendez-vous',
+            data: {{ rendezvousCounts|json_encode|raw }}, // Le nombre de rendez-vous pour chaque planning
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}

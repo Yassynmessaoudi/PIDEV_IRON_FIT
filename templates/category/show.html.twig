@@ -1,0 +1,31 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center">Catégorie</h1>
+        <div class="table-container content-wrapper mx-auto mt-4 p-4" style="max-width: 600px; border: 1px solid #ccc; border-radius: 8px;">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="text-right">Id</th>
+                        <td>{{ category.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Nom de la catégorie</th>
+                        <td>{{ category.categoryName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-3 text-center">
+            <a class="btn btn-danger" href="{{ path('app_category_edit', {'id': category.id}) }}">Modifier</a>
+  
+            <h1>{{ include('category/_delete_form.html.twig') }}</h1>
+          
+            <a class="btn btn-secondary" href="{{ path('app_category_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Index des catégories{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Index des catégories</h1>
+        <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+            <table class="table table-striped">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom de la catégorie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                        <tr>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.categoryName }}</td>
+                            <td>
+                                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-info btn-sm">Afficher</a>
+                                <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-warning btn-sm">Éditer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center">Aucun enregistrement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+             <a href="{{ path('app_category_new') }}" class="btn btn-primary">Créer une nouvelle catégorie</a>
+        </div>
+        <div class="text-right mt-3">
+           
+        </div>
+    </div>
+{% endblock %}
+
+

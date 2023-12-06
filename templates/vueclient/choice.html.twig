@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+   body {
+            text-align: center;
+        
+        }
+        .btn-success {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white; /* Changement de la couleur du texte du bouton en blanc */
+        }
+        select {
+            max-width: 200px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+{% block title %}Rendez-vous{% endblock %}
+
+{% block body %}
+    <h1>Rendez-vous</h1>
+
+{% if rendezvous is defined %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Heure</th>
+                <th scope="col">Coach</th>
+                <th scope="col">Planning</th>
+                  <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rdv in rendezvous %}
+                <tr>
+                    <th scope="row">{{ rdv.idRdv }}</th>
+                    <td>{{ rdv.dateRDV|date('d/m/Y') }}</td>
+                    <td>{{ rdv.timeRDV }}</td>
+                    <td>{{ rdv.idCoach.username }}</td>
+                    <td>{{ rdv.planning.programme }}</td>
+                     <td> {{ include('vueclient/_delete_form.html.twig') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+{% endblock %}

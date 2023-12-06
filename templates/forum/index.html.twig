@@ -1,0 +1,41 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Forum index{% endblock %}
+{% block stylesheets %}
+    
+{% endblock %}
+{% block body %}
+    <h1>Forum index</h1>
+    <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Admin</th>
+                <th>Intitule</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forum in forums %}
+            <tr>
+                <td>{{ forum.id }}</td>
+                <td>{{ forum.date ? forum.date|date('Y-m-d') : '' }}</td>
+                <td>{{ forum.Admin }}</td>
+                <td>{{ forum.intitule }}</td>
+                <td>
+                    <a href="{{ path('app_forum_show', {'id': forum.id}) }}">show</a>
+                    <a href="{{ path('app_forum_edit', {'id': forum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_forum_new') }}">Create new</a>
+{% endblock %}

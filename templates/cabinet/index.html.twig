@@ -1,0 +1,182 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Cabinet index{% endblock %}
+
+
+
+
+{% block body %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Cabinets</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item">Cabinets</li>
+                    <li class="breadcrumb-item active">Data</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cabinets</h5>
+                            <!-- Table with stripped rows -->
+                            <!-- Add Cabinet Button -->
+                            <a href="{{ path('app_cabinet_new') }}" class="btn btn-primary mb-3"><i class="bi bi-plus"></i> Add Cabinet</a>
+
+
+
+
+
+                            <form method="get" action="{{ path('app_cabinet_index') }}">
+                                <label for="speciality">Filter by Speciality:</label>
+                                <select id="speciality" name="speciality">
+                                    <option value="" {% if not selectedSpeciality %}selected{% endif %}>All Specialities</option>
+                                    {% for sp in specialities %}
+                                        <option value="{{ sp }}" {% if sp == selectedSpeciality %}selected{% endif %}>{{ sp }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit">Apply Filter</button>
+                            </form>
+
+
+
+                            <table class="table datatable">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">NomMED</th>
+                                    <th scope="col">PrenomMED</th>
+                                    <th scope="col">Specialite</th>
+                                    <th scope="col">Adresse</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Tel</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for cabinet in cabinets %}
+                                    <tr>
+                                        <th scope="row">{{ cabinet.id }}</th>
+                                        <td>{{ cabinet.nomMED }}</td>
+                                        <td>{{ cabinet.prenomMED }}</td>
+                                        <td>{{ cabinet.specialite }}</td>
+                                        <td>{{ cabinet.adresse }}</td>
+                                        <td>{{ cabinet.email }}</td>
+                                        <td>{{ cabinet.tel }}</td>
+                                        <td>
+                                            {# Add your actions here for managing cabinets #}
+                                            <!-- Example: -->
+                                            <a href="{{ path('app_cabinet_edit', {'id': cabinet.id}) }}" class="btn btn-primary"><i class="bi bi-pencil"></i></a>
+                                            <a href="{{ path('app_cabinet_delete', {'id': cabinet.id}) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cabinet Stat</h5>
+
+                    <!-- Pie Chart -->
+                    <canvas id="pieChart" style="max-height: 400px;"></canvas>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            const specialityColors = {
+                                'Sports Medicine': 'rgb(255, 99, 132)',
+                                'Weight Loss Cabinet': 'rgb(54, 162, 235)',
+                                'Muscle Building Cabinet': 'rgb(255, 205, 86)',
+                                'Endurance Athlete Cabinet': 'rgb(76, 175, 80)',
+                                'Bodybuilding Cabinet': 'rgb(255, 51, 166)',
+                                'General Health Cabinet': 'rgb(138, 43, 226)'
+                            };
+
+                            new Chart(document.querySelector('#pieChart'), {
+                                type: 'pie',
+                                data: {
+                                    labels: Object.keys(specialityColors),
+                                    datasets: [{
+                                        label: 'My First Dataset',
+                                        data: [
+                                            {{ cabinetCounts['Sports Medicine'] }},
+                                            {{ cabinetCounts['Weight Loss Cabinet'] }},
+                                            {{ cabinetCounts['Muscle Building Cabinet'] }},
+                                            {{ cabinetCounts['Endurance Athlete Cabinet'] }},
+                                            {{ cabinetCounts['Bodybuilding Cabinet'] }},
+                                            {{ cabinetCounts['General Health Cabinet'] }}
+                                        ],
+                                        backgroundColor: Object.values(specialityColors),
+                                        hoverOffset: 4
+                                    }]
+                                }
+                            });
+                        });
+
+                    </script>
+                    <!-- End Pie CHart -->
+
+                </div>
+            </div>
+        </div>
+
+    </main><!-- End #main -->
+{% endblock %}
+
+
+{#{% block body %}#}
+{#    <h1>Cabinet index</h1>#}
+
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>NomMED</th>#}
+{#                <th>PrenomMED</th>#}
+{#                <th>Specialite</th>#}
+{#                <th>Adresse</th>#}
+{#                <th>Email</th>#}
+{#                <th>Tel</th>#}
+{#                <th>actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for cabinet in cabinets %}#}
+{#            <tr>#}
+{#                <td>{{ cabinet.id }}</td>#}
+{#                <td>{{ cabinet.nomMED }}</td>#}
+{#                <td>{{ cabinet.prenomMED }}</td>#}
+{#                <td>{{ cabinet.specialite }}</td>#}
+{#                <td>{{ cabinet.adresse }}</td>#}
+{#                <td>{{ cabinet.email }}</td>#}
+{#                <td>{{ cabinet.tel }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('app_cabinet_show', {'id': cabinet.id}) }}">show</a>#}
+{#                    <a href="{{ path('app_cabinet_edit', {'id': cabinet.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="8">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+{#    <a href="{{ path('app_cabinet_new') }}">Create new</a>#}
+{#{% endblock %}#}

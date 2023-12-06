@@ -1,0 +1,38 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Sujet index{% endblock %}
+
+{% block body %}
+    <h1 >Sujet de notre forum</h1>
+    <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+    <table class="table">
+        <thead>
+            <tr>
+          
+                <th>Date</th>
+                <th>Commentaire</th>
+                <th>Reponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sujet in sujets %}
+            <tr>
+                <td>{{ sujet.date ? sujet.date|date('Y-m-d') : '' }}</td>
+                <td>{{ sujet.commentaire }}</td>
+                <td>{{ sujet.reponse }}</td>
+                <td>
+                    <a href="{{ path('app_sujet_show', {'id': sujet.id}) }}">show</a>
+                    <a href="{{ path('app_sujet_edit', {'id': sujet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sujet_new') }}">Create new</a>
+{% endblock %}
