@@ -1,0 +1,27 @@
+security:
+    enable_authenticator_manager: true
+    # define your user providers here
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: mail
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            logout:
+                path: 'app_logout'
+                target: 'app_default'
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\Authenticator
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    access_control: []

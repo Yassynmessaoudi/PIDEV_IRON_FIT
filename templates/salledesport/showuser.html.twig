@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salledesport{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 1px solid #888;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #555;
+        }
+
+        .btn-back,
+        .btn-edit {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-back {
+            background-color: #333;
+            color: white;
+            border: 1px solid #292b2c;
+            margin-right: 10px;
+        }
+
+        .btn-edit {
+            background-color: black;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="table-container">
+        <h1 style="font-size: 2em; margin-bottom: 20px; color: white;">Salledesport</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+       
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ salledesport.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ salledesport.adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Capacite</th>
+                    <td>{{ salledesport.capacite }}</td>
+                </tr>
+                <tr>
+                    <th>Specialite</th>
+                    <td>{{ salledesport.specialite }}</td>
+                </tr>
+                   <tr>
+                    <th>Image</th>
+                    <td>
+                        {% if salledesport.photo %}
+                            <img src="{{ asset(salledesport.photo) }}" alt="Photo de la salle de sport">
+                        {% else %}
+                            Aucune image disponible
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+            <a href="{{ path('app_salledesport_indexuser') }}" class="btn btn-back">Retour à la liste</a>
+           
+        </div>
+    </div>
+{% endblock %}

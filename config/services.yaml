@@ -1,0 +1,41 @@
+parameters:
+   images_directory: '%kernel.project_dir%/public/images'
+   users_directory: '%kernel.project_dir%/public/uploads'
+   twilio_account_sid: 'ACb52a631086859e7defce047aa6be2c74'
+   twilio_auth_token: '8ae56b4318d8d875294394f5ef81c948'
+   twilio_phone_number: '+16209109906'
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../src/*'
+        exclude:
+            - '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # You can add additional service definitions when you need explicit configuration.
+    App\Controller\CabinetController:
+      arguments:
+        $entityManager: '@doctrine.orm.entity_manager'
+        $smsService: '@App\Service\SMSService'
+      tags:
+        - { name: 'controller.service_arguments' }
+
+    App\Service\SMSService:
+      arguments:
+        $twilioAccountSid: '%twilio_account_sid%'
+        $twilioAuthToken: '%twilio_auth_token%'
+        $twilioPhoneNumber: '%twilio_phone_number%'
+      tags:
+        - { name: 'doctrine.repository_service' } # Ajoutez cette ligne si RegimealiRepository est un service.
+    # For example, if you have a custom repository for your User entity, you can define it as a service:
+    App\Repository\UserRepository:
+        arguments:
+            - '@Doctrine\Persistence\ManagerRegistry'
+            - 'App\Entity\User'
+

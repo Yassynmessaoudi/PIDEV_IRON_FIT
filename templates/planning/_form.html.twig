@@ -1,0 +1,11 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.niveauprogramme) }}
+    {{ form_row(form.programme) }}
+    {{ form_row(form.prix) }}
+    {{ form_row(form.image) }}
+    <img id="currentImage" src="" alt="Image actuelle" style="display: none;">
+    {{ form_row(form.videolink) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.idCoach) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

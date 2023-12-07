@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de paiment</title>
+    <style>
+        /* Ajoutez vos styles CSS personnalisés ici */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        th {
+            background-color: lightgray;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Facture</h1>
+    <p>Date : {{ "now"|date("d/m/Y") }}</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in dataPanier %}
+                <tr>
+                    <td>{{ element.product.productName }}</td>
+                    <td class="text-end">{{ element.product.price }} dt</td>
+                    <td>{{ element.quantity }}</td>
+                    <td class="text-end">{{ element.quantity * element.product.price }} dt</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-right">{{ total }} dt</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p>Votre commande arrivera sous deux jours maximum.</p>
+</body>
+</html>

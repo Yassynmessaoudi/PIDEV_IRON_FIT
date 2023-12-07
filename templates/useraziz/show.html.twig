@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sujet{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center">Votre sujet ! </h1>
+
+    <table class="table">
+        <tbody>
+          
+            <tr>
+                <th>Date</th>
+                <td>{{ sujet.date ? sujet.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ sujet.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ sujet.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_index') }}">Retourner</a>
+
+    <a href="{{ path('app_user_edit', {'id': sujet.id}) }}">Modifier </a>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publications{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('https://www.w3schools.com/w3css/4/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Raleway') }}">
+    </head>
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="w3-content" style="max-width:1300px;">
+    <!-- Grid -->
+    <div class="w3-row">
+
+        <!-- Blog entries -->
+        <div class="w3-col l8 s12">
+            <!-- Blog entry -->
+            {% for post in posts %}
+            {% if post.status == "approved" %}
+                <div class="w3-card-4 w3-margin w3-white">
+
+                    {% if post.image is not empty %}
+                        <img src="{{ asset('uploads/'~ post.image) }}" alt="Nature" style="width:100%">
+                        {% else %}
+                        <img src="{{ asset('assets/noPhoto.jpg') }}" alt="noPhoto" style="width:100%">
+                    {% endif %}
+{#                    <img src="{{ asset('uploads/'~ post.image) }}" alt="Nature" style="width:100%">#}
+                    <div class="w3-container">
+                        <h3><b>{{ post.title }}</b></h3>
+                        <h5>{{ post.status }}, <span class="w3-opacity">{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</span></h5>
+                    </div>
+                    <div class="w3-container w3-white">
+                        <p>
+{#                        {% for category in post.categories %}#}
+{#                            <span class="w3-tag w3-light-black w3-medium w3-margin-bottom">{{ category.tag }}</span>#}
+
+{#                        {% endfor %}#}
+                        </p>
+                    </div>
+
+                    <div class="w3-container">
+                        <p>{{ post.content }}</p>
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <p>
+                                    <a href="{{ path('app_post_show', {'id': post.id}) }}">
+                                        <button class="w3-button w3-padding-large w3-white w3-border">
+                                            <b>READ MORE »</b>
+                                        </a>
+                                    </button>
+                                </p>
+                            </div>
+                            <div class="w3-row" style="display: flex;">
+
+                                <div class="w3-col m4 w3-hide-small" style="flex: 1;">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_post_show', {'id': post.id})) }}" class="share facebook">
+
+                                        <button class="w3-button w3-padding-small w3-light-blue w3-border w3-medium">
+
+                                            <svg style="width: 30px; height: 30px;margin-top: 5px;margin-bottom: 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                            </svg>
+
+                                        <b>Share</b>
+                                    </button>
+                                    </a>
+                                </div>
+                                <div class="w3-col m4 w3-hide-small" style="flex: 2;">
+                                    <p><a href="{{ path('app_post_comments', {'postid': post.id}) }}"><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">{{ post.commentaires|length }}</span></span></a></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <hr>
+            <hr>
+            <div class="w3-col l4">
+            <!-- Labels / tags -->
+            <div class="w3-card w3-margin">
+            </div>
+            </div>
+        </div>
+
+        <!-- Introduction menu -->
+        <div class="w3-col l4">
+
+            <!-- Posts -->
+            <hr>
+            <div class="w3-card w3-margin">
+                <div class="w3-container w3-padding">
+                    <h4>Manage Your Posts</h4>
+                </div>
+                <div class="w3-container w3-white">
+                    <p><a href="{{ path('app_post_new') }}">
+                            <button class="w3-button w3-padding-large w3-light-blue w3-border w3-medium"><b>Add Post »</b></button></a>
+                    </p>
+                    <p><button class="w3-button w3-padding-large w3-light-blue w3-border w3-medium"><b>My Posts »</b></button></p>
+
+                </div>
+            </div>
+            <!-- Labels / tags -->
+            <div class="w3-card w3-margin">
+                <div class="w3-container w3-padding">
+                    <h4>Tags</h4>
+                </div>
+                <div class="w3-container w3-white">
+                    <p>
+{#                        {% for category in categories %}#}
+{#                            <span class="w3-tag w3-light-black w3-medium w3-margin-bottom">{{ category.tag }}</span>#}
+{#                        {% endfor %}#}
+
+                    </p>
+                </div>
+            </div>
+
+            <!-- END Introduction Menu -->
+        </div>
+        </div>
+
+</div>
+
+{% endblock %}

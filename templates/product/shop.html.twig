@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #F8F8FF; ; /* Change background color to a light gray */
+            font-family: 'Arial', sans-serif; /* Use a common sans-serif font */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333; /* Dark background color for the header */
+            color: #fff; /* White text color */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style for the filter form */
+        form {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        select, input[type="submit"] {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+    float: left;
+}
+
+        /* Style for the product list */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff; /* White background color for each product */
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            transition: transform 0.3s ease-in-out; /* Add a smooth transition effect on hover */
+        }
+
+        .product:hover {
+            transform: scale(1.05); /* Enlarge the product on hover */
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-details {
+            text-align: center;
+        }
+
+        .product-details h2 {
+            font-size: 16px;
+            color: #333; /* Dark text color for product names */
+        }
+
+        .product-details p {
+            font-size: 14px;
+            color: #666; /* Slightly darker text color for product details */
+        }
+
+        /* Style for the "Ajouter au panier" button */
+        .add-to-cart-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #4caf50; /* Green background color */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+
+        /* Style for the "Voir le panier" button */
+        .view-cart-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #4caf50; 
+            color: #fff; /* White text color */
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .view-cart-btn:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+   <header>
+        <h1>Bienvenue dans notre Boutique</h1>
+    </header>
+    <form method="get" action="{{ path('filter_products_by_category') }}">
+        <select name="categoryName" onchange="this.form.submit()">
+            <option value="" selected>Toutes les catégories</option>
+            {% for category in categories %}
+                <option value="{{ category.categoryName }}">{{ category.categoryName }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrer" class="btn btn-primary">
+    </form>
+    <div class="product-list">
+      {% for product in products %}
+        <div class="product">
+            <div class="product-image">
+                {% if product.image is not null %}
+                    {% set imagePath = '/' ~ vich_uploader_asset(product, 'imageFile') %}
+                    <img src="{{ imagePath }}" alt="{{ product.productName }} Image" class="img-thumbnail" width="150" height="100">
+                {% else %}
+                    <p>Image non disponible</p>
+                {% endif %}
+            </div>
+            <div class="product-details">
+                <h2>{{ product.productName }}</h2>
+                <p>{{ product.price }}</p>
+                
+                {# Ajouter le lien pour ajouter au panier #}
+                <a href="{{ path('app_cart_add', {'id': product.id}) }}" class="add-to-cart-btn">Ajouter au panier</a>
+            </div>
+        </div>
+    {% endfor %}   
+    </div>
+    {# Button to go to the cart #}
+    
+{% endblock %}
+
+

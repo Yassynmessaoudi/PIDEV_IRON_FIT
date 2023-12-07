@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Contact 
+			{% endblock %}
+		</title>
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                background-color: black;
+                height: 100vh; /* This will make the container take the full height of the viewport */
+            }
+            .brand {
+                align-self: center; /* This will center the image vertically */
+            }
+        </style>
+	</head>
+
+	<body>
+        <div class="container">
+            <div class="brand">
+                <img src="{{asset('home/img/61.png')}}" alt="logo"/>
+            </div>
+        </div>
+    </body>
+</html>

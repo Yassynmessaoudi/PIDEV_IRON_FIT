@@ -1,0 +1,28 @@
+{% extends 'basedb.html.twig' %}
+
+{% block body %}
+
+    <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-left: 300px; padding: 20px; margin-top: 50px;">
+        {% for utilisateur in utilisateur %}
+            <div class="grid-item" style="background-color: #666; color: white; padding: 15px; border-radius: 5px;">
+                <h3>{{ utilisateur.username }}</h3>
+                <p><strong>Sexe:</strong> {{ utilisateur.sexe }}</p>
+                <p><strong>Age:</strong> {{ utilisateur.age }}</p>
+                <p><strong>Role:</strong> {{ utilisateur.role }}</p>
+                <p><strong>Image:</strong> {{ utilisateur.image }}</p>
+                <p><strong>E-mail:</strong> {{ utilisateur.mail }}</p>
+                <p><strong>Mot de passe:</strong> {{ utilisateur.mdp }}</p>
+                <div>
+                    <a href="{{ path('app_user_edit', {'idUser':utilisateur.getIdUser()}) }}" class="btn btn-dark" style="text-decoration: none; border-radius: 3px; margin-top: 10px; display: inline-block;">Modifier</a>
+                    <a href="{{ path('app_user_delete', {'id': utilisateur.getIdUser()}) }}" class="btn btn-secondary" style="text-decoration: none; border-radius: 3px; margin-top: 10px; display: inline-block;">Supprimer</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+    
+    <div align="center" style="margin-left: 300px; margin-top: 20px;">
+        <a href="{{ path('app_user_new') }}" class="btn btn-return" style="background-color: #da2424; color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; text-decoration: none; border-radius: 3px; margin-right: 10px;">Ajouter </a>
+    </div>
+{% endblock %}

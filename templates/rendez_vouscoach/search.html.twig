@@ -1,0 +1,129 @@
+{% extends 'basecoach.html.twig' %}
+
+{% block title %}RendezVous index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+        /* Utilisez les mêmes styles que dans index.html.twig */
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white; /* Changement de la couleur du fond du conteneur */
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black; /* Bordure noire */
+        }
+
+        .table-container table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            color: black; /* Contenu du tableau en noir */
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 2px solid black; /* Bordure noire */
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: white; /* Fond blanc pour l'en-tête */
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: white; /* Fond blanc pour les lignes paires */
+        }
+
+        .table-container tr:nth-child(odd) {
+            background-color: #eee; /* Fond gris clair pour les lignes impaires */
+        }
+
+        .btn-info,
+        .btn-warning {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            color: white; /* Changement de la couleur du texte des boutons en blanc */
+            margin-right: 10px;
+        }
+
+        .btn-info {
+            background-color: grey;
+            border: 1px solid #888;
+        }
+
+        .btn-warning {
+            background-color: black;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn-create {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white; /* Changement de la couleur du texte du bouton en blanc */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+  <div class="table-container content-wrapper" style="margin-left: 300px; padding: 20px; margin-top: 50px;">
+        <h1 style="font-size: 2em; margin-bottom: 20px; color: white;">Liste des Rendezvous</h1>
+
+ <form action="{{ path('app_rendez_vouscoach_search') }}" method="get">
+<input type="text" name="idRdv" placeholder="Entrer l'id du rendezvous à recherché">
+
+               <button type="submit">Rechercher</button>
+
+                    </form>
+       <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>IdRdv</th>
+                <th>Coach</th>
+                <th>Client</th>
+                <th>DateRdv</th>
+                <th>TimeRdv</th>
+                <th>Planning</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if rendez_vou %}
+                <tr>
+                    <td>{{ rendez_vou.idRdv }}</td>
+                    <td>{{ rendez_vou.idCoach }}</td>
+                    <td>{{ rendez_vou.idclient }}</td>
+                    <td>{{ rendez_vou.dateRdv|date('Y-m-d ') }}</td>
+                    <td>{{ rendez_vou.timeRdv }}</td>
+                    <td>{{ rendez_vou.getPlanning().getidPlanning() }}</td>
+
+                    <td>
+                        <a href="{{ path('app_rendez_vouscoach_show', {'idRdv': rendez_vou.idRdv}) }}" class="btn btn-info">Voir</a>
+                        <a href="{{ path('app_rendez_vouscoach_edit', {'idRdv': rendez_vou.idRdv}) }}" class="btn btn-warning">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun rendez-vous trouvé</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    <div class="btn-group">
+             <a href="{{ path('app_rendez_vouscoach_index') }}" class="btn btn-info btn-small">Retour à la liste</a>
+        </div>
+{% endblock %}

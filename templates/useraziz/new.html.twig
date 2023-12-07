@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sujet{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center">Creer une nouvelle discussion !</h1>
+
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('app_user_index') }}">Retourner </a>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Statistiques sur le Genre {% endblock %}
+
+{% block body %}
+    <div class="statistics-container" style="margin: 50px auto; max-width: 800px; text-align: center; background-color: #f8f8f8; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h1 style="color: #333;">Statistiques sur le Genre</h1>
+
+        <div style="margin-top: 20px;">
+            <p>Total d'utilisateurs : {{ totalUtilisateurs }}</p>
+            <p>Hommes : {{ hommes }} ({{ pourcentageHommes }}%)</p>
+            <p>Femmes : {{ femmes }} ({{ pourcentageFemmes }}%)</p>
+        </div>
+
+        <!-- Ajoutez un espace entre les informations et les graphiques -->
+        <div style="margin-top: 30px;"></div>
+
+        <!-- Graphique circulaire -->
+        <div class="chart-container" style="display: inline-block; width: 45%;">
+            <canvas id="genreChart" width="200" height="200"></canvas>
+        </div>
+
+        <!-- Ajoutez un espace entre les deux graphiques -->
+        <div style="display: inline-block; width: 10%;"></div>
+
+        <!-- Graphique de barre -->
+        <div class="chart-container" style="display: inline-block; width: 45%;">
+            <canvas id="barChart" width="200" height="200"></canvas>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+    <script>
+        // Récupérez les données depuis Symfony pour le graphique circulaire
+        var hommes = {{ hommes }};
+        var femmes = {{ femmes }};
+        var pourcentageHommes = {{ pourcentageHommes }};
+        var pourcentageFemmes = {{ pourcentageFemmes }};
+
+        // Créez un tableau de données pour le graphique circulaire
+        var pieData = {
+            labels: ['Hommes', 'Femmes'],
+            datasets: [{
+                data: [hommes, femmes],
+                backgroundColor: ['Black', 'Red'], // Couleurs pour les segments
+            }],
+        };
+
+        // Récupérez le contexte du canevas pour le graphique circulaire
+        var pieCtx = document.getElementById('genreChart').getContext('2d');
+
+        // Créez le graphique circulaire en utilisant Chart.js
+        var pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: pieData,
+        });
+
+        // Récupérez les données depuis Symfony pour le graphique de barre
+        var barData = {
+            labels: ['Hommes', 'Femmes'],
+            datasets: [{
+                data: [hommes, femmes],
+                backgroundColor: ['Black', 'Red'], // Couleurs pour les barres
+            }],
+        };
+
+        // Récupérez le contexte du canevas pour le graphique de barre
+        var barCtx = document.getElementById('barChart').getContext('2d');
+
+        // Créez le graphique de barre en utilisant Chart.js
+        var barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: barData,
+        });
+    </script>
+{% endblock %}
