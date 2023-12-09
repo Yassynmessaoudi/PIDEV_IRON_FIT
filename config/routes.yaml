@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_shop:
+    path: /product/shop
+    controller: App\Controller\ProductController::shop
+    methods: ['GET']

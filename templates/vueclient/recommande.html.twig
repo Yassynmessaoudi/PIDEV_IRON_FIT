@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+    <style>
+   body {
+            text-align: center;
+        
+        }
+        .btn-success {
+            background-color: #333;
+            border: 1px solid #292b2c;
+            margin-top: 20px;
+            color: white; /* Changement de la couleur du texte du bouton en blanc */
+        }
+        select {
+            max-width: 200px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1><strong>Rendez-vous pour le planning : </strong>{{ planning.programme }}</h1>
+
+    {{ form_start(recommande_form) }}
+    {{ form_row(recommande_form.dateRdv) }}
+    {{ form_row(recommande_form.timeRdv) }}
+ 
+    <button type="submit" class="btn btn-success">Confirmer le rendez-vous</button>
+{{ form_end(recommande_form) }}
+
+
+   <a href="{{ path('app_mainplanning_show', {'id': planning.IdPlanning}) }}" class="btn btn-dark">Retour</a>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le produit{% endblock %}
+
+{% block body %}
+    <!-- Conteneur principal -->
+    <div class="container-fluid bg-secondary" style="min-height: 100vh;">
+        <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="col-md-8">
+                <!-- Carte de modification du produit -->
+                <div class="card mt-5">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h1>Modifier le produit</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Formulaire de modification du produit -->
+                        {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour', 'button_color': 'btn-warning'}) }}
+                    </div>
+                </div>
+
+                <!-- Carte de suppression du produit -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <!-- Formulaire de suppression du produit -->
+                        {{ include('product/_delete_form.html.twig', {'button_color': 'btn-danger'}) }}
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{{ path('app_product_index') }}" class="btn btn-secondary btn-lg">Retour à la liste</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

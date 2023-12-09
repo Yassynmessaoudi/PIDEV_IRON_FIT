@@ -1,0 +1,47 @@
+
+
+
+<style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+        font-size: medium;
+    }
+    .form-error input {
+        border: 1px solid red;
+    }
+
+</style>
+{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+
+<div class="form-container form-error">
+    <label for="{{ form.prixRegime.vars.id }}">prixRegime:</label>
+    {{ form_widget(form.prixRegime) }}
+    <div class="error-message">
+        {{ form_errors(form.prixRegime) }}
+    </div>
+
+    <label for="{{ form.typeRegime.vars.id }}">typeRegime:</label>
+    {{ form_widget(form.typeRegime) }}
+    <div class="error-message">
+        {{ form_errors(form.typeRegime) }}
+    </div>
+
+
+    <label for="{{ form.reg.vars.id }}">Image:</label>
+    {{ form_widget(form.reg) }}
+    <div class="error-message">
+        {{ form_errors(form.reg) }}
+    </div>
+
+    <label for="{{ form.idCabinet.vars.id }}">Cabinet:</label>
+    {{ form_widget(form.idCabinet) }}
+    <div class="error-message">
+        {{ form_errors(form.idCabinet) }}
+    </div>
+
+</div>
+
+<button class="button" style="margin:20px;background-color:#5eb5e0 ">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

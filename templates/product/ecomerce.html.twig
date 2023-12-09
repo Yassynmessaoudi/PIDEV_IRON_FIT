@@ -1,0 +1,23 @@
+{# ecomerce.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Produits de la catégorie {{ categoryName }}</h1>
+
+    <form method="get" action="{{ path('filter_products_by_category') }}">
+        <select name="categoryName" onchange="this.form.submit()">
+            <option value="" selected>Toutes les catégories</option>
+            {% for category in categories %}
+                <option value="{{ category.categoryName }}" {% if category.categoryName == categoryName %}selected{% endif %}>{{ category.categoryName }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrer">
+    </form>
+
+    <ul>
+        {% for product in products %}
+            <li>{{ product.productName }} - {{ product.price }} €</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

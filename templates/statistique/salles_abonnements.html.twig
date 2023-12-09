@@ -1,0 +1,29 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Salledesport{% endblock %}
+{% block body %}
+<canvas id="abonnements-chart" width="200" height="60" style="margin-left: 300px; padding: 20px; margin-top: 50px;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var labels = {{ labels|raw }};
+    var data = {{ data|raw }};
+
+    var ctx = document.getElementById('abonnements-chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Nombre d\'abonnements par salle de sport',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)', 
+                borderColor: 'rgba(54, 162, 235, 1)', 
+                borderWidth: 1
+            }]
+        },
+        options: {
+           
+        }
+    });
+</script>
+{% endblock %}

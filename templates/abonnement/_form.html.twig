@@ -1,0 +1,44 @@
+<div class="container">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.type, {
+        'label': 'Type',
+        'label_attr': {'class': 'font-weight-bold'},
+        'attr': {'class': 'form-control'}
+    }) }}
+    <span class="error">{{ form_errors(form.type) }}</span>
+
+    {{ form_row(form.datedebut, {
+        'label': 'Date Début',
+        'label_attr': {'class': 'font-weight-bold'},
+        'attr': {'class': 'form-control'}
+    }) }}
+    <span class="error">{{ form_errors(form.datedebut) }}</span>
+
+    {{ form_row(form.datefin, {
+        'label': 'Date Fin',
+        'label_attr': {'class': 'font-weight-bold'},
+        'attr': {'class': 'form-control', 'readonly': 'readonly'}
+    }) }}
+    <span class="error">{{ form_errors(form.datefin) }}</span>
+
+    {{ form_row(form.prix, {
+        'label': 'Prix',
+        'label_attr': {'class': 'font-weight-bold'},
+        'attr': {'class': 'form-control', 'readonly': 'readonly'}
+    }) }}
+    <span class="error">{{ form_errors(form.prix) }}</span>
+
+    {{ form_row(form.idsalledesport, {
+        'label': 'ID Salle de Sport',
+        'label_attr': {'class': 'font-weight-bold'},
+        'attr': {'class': 'form-control'}
+    }) }}
+    <span class="error">{{ form_errors(form.idsalledesport) }}</span>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+
+    {{ form_end(form) }}
+</div>

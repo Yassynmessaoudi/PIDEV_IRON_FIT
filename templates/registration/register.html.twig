@@ -1,0 +1,66 @@
+{% extends 'home.html.twig' %}
+	{% block body %}
+	<body class="my-login-page">
+		<section class="h-100">
+			<div class="container h-100">
+				<div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+						
+						<div class="card fat">
+							<div class="card-body">
+								<h4 class="card-title">Inscription</h4>
+								{% for flash_error in app.flashes('verify_email_error') %}
+									<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+								{% endfor %}
+								{{ form_errors(registrationForm) }}
+								{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+								<div class="form-group">
+									<label for="username">Nom d'utilisateur</label>
+									{{ form_widget(registrationForm.username, {'attr':{'class':'form-control'}}) }}
+								</div>
+								<div class="form-group">
+									<label for="mail">Email</label>
+									{{ form_widget(registrationForm.mail, { attr: { class: 'form-control' } }) }}
+								</div>
+								<div class="form-group">
+									<label for="mdp">Mot de passe</label>
+									{{ form_widget(registrationForm.mdp, { attr: { class: 'form-control' } }) }}
+								</div>
+								<div class="form-group">
+									<label for="sexe">Sexe</label>
+									{{ form_widget(registrationForm.sexe, {'attr': {'class': 'form-control'}}) }}
+								</div>
+								<div class="form-group">
+									<label for="age">Age</label>
+									{{ form_widget(registrationForm.age, {'attr': {'class': 'form-control'}}) }}
+								</div>
+								<div class="form-group">
+									<label for="role">Rôle</label>
+									{{ form_widget(registrationForm.role, {'attr': {'class': 'form-control'}}) }}
+								</div>
+								<div class="form-group">
+									<label for="image">Image</label>
+									{{ form_widget(registrationForm.image, {'attr': {'class': 'form-control'}}) }}
+								</div>
+								<div class="form-group">
+									{{ form_row(registrationForm.Register, {'attr': {'class': 'btn btn-primary btn-block'}}) }}
+								</div>
+								{{ form_end(registrationForm) }}
+								<div class="mt-4 text-center">
+									Déjà un compte ? <a href="{{path('app_login')}}">Connexion</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		{% block javascripts %}
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+			<script src="{{asset('home/js/my-login.js')}}"></script>
+		{% endblock %}
+	</body>
+	{% endblock %}
+

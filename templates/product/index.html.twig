@@ -1,0 +1,116 @@
+{% extends 'basedb.html.twig' %}
+
+{% block title %}Index des produits{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #f0f8ff; /* Couleur de fond légère */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-container {
+            background-color: #fff; /* Couleur de fond du conteneur de la table */
+            margin-left: 300px;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère autour du conteneur */
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6; /* Couleur de la bordure de la table */
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f2f2f2; /* Couleur de fond des lignes impaires du corps de la table */
+        }
+
+        .bg-info {
+            background-color: #007bff !important; /* Couleur de fond de l'en-tête de la table */
+            color: #fff; /* Couleur du texte de l'en-tête de la table */
+        }
+
+        .btn-dynamic {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transition fluide de la couleur de fond */
+        }
+
+        .btn-dynamic:hover {
+            filter: brightness(90%); /* Légère réduction de la luminosité au survol */
+        }
+
+        .btn-dark {
+            background-color: #343a40; /* Couleur de fond du bouton sombre */
+            color: #fff; /* Couleur du texte du bouton sombre */
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Couleur de fond du bouton de danger */
+            color: #fff; /* Couleur du texte du bouton de danger */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Couleur de fond du bouton primaire */
+            color: #fff; /* Couleur du texte du bouton primaire */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-primary">Index des produits</h1>
+    <div class="table-container">
+        <h1 class="text-center mb-4">Liste des produits</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom du produit</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Prix</th>
+                    <th>Quantité en stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if products is not empty %}
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.productName }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>
+                                {% if product.image is not null %}
+                                    {% set imagePath = '/' ~ vich_uploader_asset(product, 'imageFile') %}
+                                    <img src="{{ imagePath }}" alt="Product Image" class="img-thumbnail" width="150" height="100">
+                                {% else %}
+                                    Image non disponible
+                                {% endif %}
+                            </td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.quantityInStock }}</td>
+                            <td>
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-dark btn-sm btn-dynamic">Afficher</a>
+                                <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-danger btn-sm btn-dynamic">Éditer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">Aucun enregistrement trouvé</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_product_new') }}" class="btn btn-primary mt-3 btn-dynamic">Créer un nouveau</a>
+    </div>
+{% endblock %}
